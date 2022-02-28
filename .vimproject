@@ -1,0 +1,4018 @@
+ARGO=/$PWD filter="*" {
+ workflow.rb
+ nextflow.config
+ qc_fastq.nf
+ lib=lib {
+  ARGO=ARGO {
+   tasks=tasks {
+    sample.rb
+    sample=sample{
+     BAM.rb
+     Mutect2.rb
+     Sanger.rb
+    }
+   }
+  }
+ }
+ benchmark=benchmark {
+  TCRB-CA.DO262483.minimal.tgz
+  minimal=minimal {
+   README.md
+   WGS=WGS {
+    CRAM=CRAM {
+     normal=normal {
+      TCRB-CA.DO262483.SA622770.wgs.minimal.normal.20211201.cram
+      TCRB-CA.DO262483.SA622770.wgs.minimal.normal.20211201.cram.crai
+     }
+     tumor=tumor {
+      TCRB-CA.DO262483.SA622771.wgs.minimal.tumor.20211201.cram
+      TCRB-CA.DO262483.SA622771.wgs.minimal.tumor.20211201.cram.crai
+     }
+    }
+    CRAM-mini=CRAM-mini {
+     normal=normal {
+      TCRB-CA.DO262483.SA622770.wgs.minimal.normal.20211201.mini-aln.cram
+      TCRB-CA.DO262483.SA622770.wgs.minimal.normal.20211201.mini-aln.cram.crai
+     }
+     tumor=tumor {
+      TCRB-CA.DO262483.SA622771.wgs.minimal.tumor.20211201.mini-aln.cram
+      TCRB-CA.DO262483.SA622771.wgs.minimal.tumor.20211201.mini-aln.cram.crai
+     }
+    }
+    FASTQ=FASTQ {
+     normal=normal {
+      TCRB-CA.DO262483.SA622770.wgs.minimal.normal.20211201_read1.fq.gz
+      TCRB-CA.DO262483.SA622770.wgs.minimal.normal.20211201_read2.fq.gz
+     }
+     tumor=tumor {
+      TCRB-CA.DO262483.SA622771.wgs.minimal.tumor.20211201_read1.fq.gz
+      TCRB-CA.DO262483.SA622771.wgs.minimal.tumor.20211201_read2.fq.gz
+     }
+    }
+   }
+   inputs=inputs {
+    regions.bed
+   }
+   mini-reference=mini-reference {
+    hg38.dict
+    hg38.fa.gz
+    hg38.fa.gz.amb
+    hg38.fa.gz.ann
+    hg38.fa.gz.bwt
+    hg38.fa.gz.fai
+    hg38.fa.gz.gzi
+    hg38.fa.gz.md5
+    hg38.fa.gz.pac
+    hg38.fa.gz.sa
+    known_sites=known_sites {
+     1000G_phase1.indels.vcf.gz
+     1000G_phase1.indels.vcf.gz.md5
+     1000G_phase1.indels.vcf.gz.tbi
+     1000G_phase1.snps.high_confidence.vcf.gz
+     1000G_phase1.snps.high_confidence.vcf.gz.md5
+     1000G_phase1.snps.high_confidence.vcf.gz.tbi
+     Miller_1000G_indels.vcf.gz
+     Miller_1000G_indels.vcf.gz.md5
+     Miller_1000G_indels.vcf.gz.tbi
+     af-only-gnomad.vcf.gz
+     af-only-gnomad.vcf.gz.md5
+     af-only-gnomad.vcf.gz.tbi
+     dbsnp_146.vcf.gz
+     dbsnp_146.vcf.gz.md5
+     dbsnp_146.vcf.gz.tbi
+     panel_of_normals.vcf.gz
+     panel_of_normals.vcf.gz.md5
+     panel_of_normals.vcf.gz.tbi
+     small_exac_common_3.vcf.gz
+     small_exac_common_3.vcf.gz.md5
+     small_exac_common_3.vcf.gz.tbi
+    }
+   }
+  }
+ }
+ data=data {
+  tumor_read1.fq.gz
+  tumor_read2.fq.gz
+  ARGO-NEAT=ARGO-NEAT {
+   WGS=WGS {
+    --depth=--depth {
+    }
+    --depth_normal=--depth_normal {
+    }
+    --log=--log {
+    }
+    --log_normal=--log_normal {
+    }
+    ARGO-NEAT=ARGO-NEAT {
+     tumor_read1.fq.gz
+     tumor_read2.fq.gz
+    }
+    ARGO-NEAT-v3=ARGO-NEAT-v3 {
+     tumor_read1.fq.gz
+     tumor_read2.fq.gz
+    }
+    ARGO-NEAT-v3_normal=ARGO-NEAT-v3_normal {
+     normal_read1.fq.gz
+     normal_read2.fq.gz
+    }
+    ARGO-NEAT-v5=ARGO-NEAT-v5 {
+     tumor_read1.fq.gz
+     tumor_read2.fq.gz
+    }
+    ARGO-NEAT-v5_normal=ARGO-NEAT-v5_normal {
+     normal_read1.fq.gz
+     normal_read2.fq.gz
+    }
+    ARGO-NEAT_normal=ARGO-NEAT_normal {
+     normal_read1.fq.gz
+     normal_read2.fq.gz
+    }
+    ARGO-NOSV=ARGO-NOSV {
+     tumor_read1.fq.gz
+     tumor_read2.fq.gz
+    }
+    ARGO-NOSV_normal=ARGO-NOSV_normal {
+     normal_read1.fq.gz
+     normal_read2.fq.gz
+    }
+    ARGO-SV=ARGO-SV {
+     tumor_read1.fq.gz
+     tumor_read2.fq.gz
+    }
+    ARGO-SV_normal=ARGO-SV_normal {
+     normal_read1.fq.gz
+     normal_read2.fq.gz
+    }
+    ARGO-evo=ARGO-evo {
+     tumor_read1.fq.gz
+     tumor_read2.fq.gz
+    }
+    ARGO-evo_normal=ARGO-evo_normal {
+     normal_read1.fq.gz
+     normal_read2.fq.gz
+    }
+    home=home {
+     mvazque2=mvazque2 {
+     }
+    }
+   }
+   bin=bin {
+    prepare_argo.rb
+   }
+   data=data {
+    BAM=BAM {
+     normal.bai
+     normal.bam
+     normal.bam.md5
+     tumor.bai
+     tumor.bam
+     tumor.bam.md5
+    }
+    FASTQ=FASTQ {
+     normal=normal {
+      normal_read1.fq.gz
+      normal_read2.fq.gz
+     }
+     tumor=tumor {
+      tumor_read1.fq.gz
+      tumor_read2.fq.gz
+     }
+    }
+    golden_BAM=golden_BAM {
+     normal_golden.bam
+     normal_golden.bam.bai
+     tumor_golden.bam
+     tumor_golden.bam.bai
+    }
+    known_sites=known_sites {
+     1000G_phase1.indels.vcf.gz
+     1000G_phase1.indels.vcf.gz.tbi
+     1000G_phase1.snps.high_confidence.vcf.gz
+     1000G_phase1.snps.high_confidence.vcf.gz.tbi
+     Miller_1000G_indels.vcf.gz
+     Miller_1000G_indels.vcf.gz.tbi
+     af-only-gnomad.vcf.gz
+     af-only-gnomad.vcf.gz.tbi
+     dbsnp_146.vcf.gz
+     dbsnp_146.vcf.gz.tbi
+     panel_of_normals.vcf.gz
+     panel_of_normals.vcf.gz.tbi
+     small_exac_common_3.vcf.gz
+     small_exac_common_3.vcf.gz.tbi
+    }
+    reference=reference {
+     hg38.dict
+     hg38.fa
+     hg38.fa.amb
+     hg38.fa.ann
+     hg38.fa.bwt
+     hg38.fa.byNS.interval_list
+     hg38.fa.fai
+     hg38.fa.gz
+     hg38.fa.gz.amb
+     hg38.fa.gz.ann
+     hg38.fa.gz.bwt
+     hg38.fa.gz.byNS.interval_list
+     hg38.fa.gz.fai
+     hg38.fa.gz.gzi
+     hg38.fa.gz.pac
+     hg38.fa.gz.sa
+     hg38.fa.gzi
+     hg38.fa.pac
+     hg38.fa.sa
+    }
+    truth=truth {
+     germline.vcf
+     somatic.vcf
+     tumor.vcf
+    }
+   }
+   data2=data2 {
+    ARGO-NEAT.v3=ARGO-NEAT.v3 {
+     BAM=BAM {
+      normal.bai
+      normal.bam
+      tumor.bai
+      tumor.bam
+     }
+     FASTQ=FASTQ {
+      normal=normal {
+       normal_read1.fq.gz
+       normal_read2.fq.gz
+      }
+      tumor=tumor {
+       tumor_read1.fq.gz
+       tumor_read2.fq.gz
+      }
+     }
+     golden_BAM=golden_BAM {
+      normal_golden.bam
+      normal_golden.bam.bai
+      normal_golden.bam.md5
+      tumor_golden.bam
+      tumor_golden.bam.bai
+      tumor_golden.bam.md5
+     }
+     known_sites=known_sites {
+      1000G_phase1.indels.vcf.gz
+      1000G_phase1.indels.vcf.gz.tbi
+      1000G_phase1.snps.high_confidence.vcf.gz
+      1000G_phase1.snps.high_confidence.vcf.gz.md5
+      1000G_phase1.snps.high_confidence.vcf.gz.tbi
+      Miller_1000G_indels.vcf.gz
+      Miller_1000G_indels.vcf.gz.md5
+      Miller_1000G_indels.vcf.gz.tbi
+      af-only-gnomad.vcf.gz
+      af-only-gnomad.vcf.gz.md5
+      af-only-gnomad.vcf.gz.tbi
+      dbsnp_146.vcf.gz
+      dbsnp_146.vcf.gz.md5
+      dbsnp_146.vcf.gz.tbi
+      panel_of_normals.vcf.gz
+      panel_of_normals.vcf.gz.tbi
+      small_exac_common_3.vcf.gz
+      small_exac_common_3.vcf.gz.md5
+      small_exac_common_3.vcf.gz.tbi
+     }
+     reference=reference {
+      hg38.dict
+      hg38.fa
+      hg38.fa.byNS.interval_list
+      hg38.fa.gz
+      hg38.fa.gz.amb
+      hg38.fa.gz.ann
+      hg38.fa.gz.bwt
+      hg38.fa.gz.fai
+      hg38.fa.gz.sa
+      hg38.fa.gzi
+      hg38.fa.pac
+     }
+     truth=truth {
+      germline.vcf
+      somatic.vcf
+      tumor.vcf
+     }
+    }
+   }
+   options=options {
+    reference
+   }
+  }
+ }
+ modules=modules{
+  argo-qc-tools=argo-qc-tools {
+   LICENSE
+   LICENSE-short
+   README.md
+   nextflow.config
+   bedtools-hist=bedtools-hist {
+    Dockerfile
+    main.nf
+    main.py
+    nextflow.config
+    pkg.json
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-job-1.json
+     test-job-2.json
+     expected=expected {
+      SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_hist.cram.tgz
+      SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_hist.tgz
+     }
+     input=input {
+      README.md
+      SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam
+      SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram
+      hg38.bed
+     }
+     outdir=outdir {
+      checker_coverageHistogram=checker_coverageHistogram {
+       SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_hist.tgz
+       SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_hist.tgz
+      }
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         helper-functions
+         1.0.1
+        }
+       }
+      }
+     }
+     work=work {
+      0f=0f {
+       2fbb5624ddb93c64fa56fd3ea19dc5=2fbb5624ddb93c64fa56fd3ea19dc5 {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_hist.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_hist.tsv
+        hg38.bed
+        qc_metrics.json
+        tar_content.json
+       }
+      }
+      5e=5e {
+       3e162d2bb1ed6fdeaff8a17a62b288=3e162d2bb1ed6fdeaff8a17a62b288 {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_hist.cram.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_hist.tgz
+       }
+       a39d4d788a6ccf9f8651590d3baefd=a39d4d788a6ccf9f8651590d3baefd {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_hist.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_hist.tsv
+        hg38.bed
+        qc_metrics.json
+        tar_content.json
+       }
+      }
+      77=77 {
+       8803f9865df5322165639c767b7b64=8803f9865df5322165639c767b7b64 {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_hist.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_hist.tgz
+       }
+      }
+      8b=8b {
+       abcfc43dac4fc0913932fea01db463=abcfc43dac4fc0913932fea01db463 {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_hist.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_hist.tsv
+        hg38.bed
+        qc_metrics.json
+        tar_content.json
+       }
+      }
+      cb=cb {
+       7c5a607d64585e4344f7184b3f9788=7c5a607d64585e4344f7184b3f9788 {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_hist.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_hist.tsv
+        hg38.bed
+        qc_metrics.json
+        tar_content.json
+       }
+      }
+      d9=d9 {
+       473898c18472c42fb915cf3430bab1=473898c18472c42fb915cf3430bab1 {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_hist.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_hist.tgz
+       }
+      }
+      ec=ec {
+       760246b0302065f24b548a597951ee=760246b0302065f24b548a597951ee {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_hist.cram.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_hist.tgz
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        helper-functions
+        1.0.1
+       }
+      }
+     }
+    }
+   }
+   bedtools-mean=bedtools-mean {
+    Dockerfile
+    main.nf
+    main.py
+    nextflow.config
+    pkg.json
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-job-1.json
+     test-job-2.json
+     expected=expected {
+      SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_mean.cram.tgz
+      SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_mean.tgz
+     }
+     input=input {
+      LTR_intervals.chr22.bed
+      README.md
+      SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam
+      SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram
+     }
+     outdir=outdir {
+      checker_coverageMeanTarget=checker_coverageMeanTarget {
+       SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_mean.tgz
+       SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_mean.tgz
+      }
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         helper-functions
+         1.0.1
+        }
+       }
+      }
+     }
+     work=work {
+      00=00 {
+       6548af644bab6595acb50ee24dc15c=6548af644bab6595acb50ee24dc15c {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_mean.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_mean.tgz
+       }
+      }
+      18=18 {
+       416a4f213b4f00a25beb4c4b9f8753=416a4f213b4f00a25beb4c4b9f8753 {
+        LTR_intervals.chr22.bed
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_mean.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_mean.tsv
+        qc_metrics.json
+        tar_content.json
+       }
+      }
+      76=76 {
+       44430f304737d62cc064f1866b7c0c=44430f304737d62cc064f1866b7c0c {
+        LTR_intervals.chr22.bed
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_mean.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_mean.tsv
+        qc_metrics.json
+        tar_content.json
+       }
+      }
+      7d=7d {
+       53b2d6e06b3b3daeb140ad2d654770=53b2d6e06b3b3daeb140ad2d654770 {
+        LTR_intervals.chr22.bed
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_mean.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_mean.tsv
+        qc_metrics.json
+        tar_content.json
+       }
+      }
+      84=84 {
+       10683228fa12a31e7f86fd88656621=10683228fa12a31e7f86fd88656621 {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_mean.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_mean.tgz
+       }
+      }
+      a3=a3 {
+       f01d04043e3e623d7d4572bd240cf7=f01d04043e3e623d7d4572bd240cf7 {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_mean.cram.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_mean.tgz
+       }
+      }
+      e3=e3 {
+       2bdb78eadcef537ec3b1136373e099=2bdb78eadcef537ec3b1136373e099 {
+        LTR_intervals.chr22.bed
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_mean.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.bam.coverage_mean.tsv
+        qc_metrics.json
+        tar_content.json
+       }
+      }
+      e4=e4 {
+       9f16e9d2f0100b9011ec10dc745750=9f16e9d2f0100b9011ec10dc745750 {
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.precalculated_coverage_mean.cram.tgz
+        SWID_SQ_REPSYM_REPSYM_NoIndex_L001_001.chr22.sub.cram.coverage_mean.tgz
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        helper-functions
+        1.0.1
+       }
+      }
+     }
+    }
+   }
+   cutadapt=cutadapt {
+    Dockerfile
+    README.md
+    main.nf
+    main.py
+    nextflow.config
+    pkg.json
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-job-1.json
+     expected=expected {
+      expected-TCRBOA7-T-RNA.cutadapt.log.qc.tgz
+     }
+     input=input {
+      README.md
+      TCRBOA7-T-RNA.250reads.read1.fastq.gz
+      TCRBOA7-T-RNA.250reads.read2.fastq.gz
+     }
+     outdir=outdir {
+      checker_cutadapt=checker_cutadapt {
+       output_dir=output_dir {
+        TCRBOA7-T-RNA.cutadapt.log.qc.tgz
+       }
+      }
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         helper-functions
+         1.0.1
+        }
+       }
+      }
+     }
+     work=work {
+      12=12 {
+       953215bb490cc2dadc4061d30df99f=953215bb490cc2dadc4061d30df99f {
+        TCRBOA7-T-RNA.250reads.read1.fastq.gz
+        TCRBOA7-T-RNA.250reads.read2.fastq.gz
+        tar_content.json
+        output_dir=output_dir {
+         TCRBOA7-T-RNA.cutadapt.log
+         TCRBOA7-T-RNA.cutadapt.log.qc.tgz
+         TCRBOA7-T-RNA.cutadapt.log.qc_metrics.json
+         out.fastq.gz
+         out2.fastq.gz
+        }
+       }
+      }
+      63=63 {
+       62b0eeeb5a3fa4caf8071e5abdcfe8=62b0eeeb5a3fa4caf8071e5abdcfe8 {
+        TCRBOA7-T-RNA.cutadapt.log.qc.tgz
+        expected-TCRBOA7-T-RNA.cutadapt.log.qc.tgz
+        actual=actual {
+         TCRBOA7-T-RNA.cutadapt.log
+         TCRBOA7-T-RNA.cutadapt.log.qc_metrics.json
+         cleaned.logfile
+         tar_content.json
+        }
+        expected=expected {
+         TCRBOA7-T-RNA.cutadapt.log
+         TCRBOA7-T-RNA.cutadapt.log.qc_metrics.json
+         cleaned.logfile
+         tar_content.json
+        }
+       }
+       a9dc2c5ae71e0a8334ed354694968d=a9dc2c5ae71e0a8334ed354694968d {
+        TCRBOA7-T-RNA.cutadapt.log.qc.tgz
+        expected-TCRBOA7-T-RNA.cutadapt.log.qc.tgz
+        actual=actual {
+         TCRBOA7-T-RNA.cutadapt.log
+         TCRBOA7-T-RNA.cutadapt.log.qc_metrics.json
+         cleaned.logfile
+         tar_content.json
+        }
+        expected=expected {
+         TCRBOA7-T-RNA.cutadapt.log
+         TCRBOA7-T-RNA.cutadapt.log.qc_metrics.json
+         cleaned.logfile
+         tar_content.json
+        }
+       }
+      }
+      a4=a4 {
+       77ee6e84584905de3ae7aa75c293a4=77ee6e84584905de3ae7aa75c293a4 {
+        TCRBOA7-T-RNA.250reads.read1.fastq.gz
+        TCRBOA7-T-RNA.250reads.read2.fastq.gz
+        tar_content.json
+        output_dir=output_dir {
+         TCRBOA7-T-RNA.cutadapt.log
+         TCRBOA7-T-RNA.cutadapt.log.qc.tgz
+         TCRBOA7-T-RNA.cutadapt.log.qc_metrics.json
+         out.fastq.gz
+         out2.fastq.gz
+        }
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        helper-functions
+        1.0.1
+       }
+      }
+     }
+    }
+   }
+   detin=detin {
+    Dockerfile
+    main.nf
+    nextflow.config
+    pkg.json
+    deTiN=deTiN {
+     LICENSE
+     README.md
+     __about__.py
+     __init__.py
+     deTiN.py
+     deTiN_SSNV_based_estimate.py
+     deTiN_aSCNA_based_estimate.py
+     deTiN_utilities.py
+     requirements.txt
+     setup.py
+    }
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-job-1.json
+     expected=expected {
+      10_percent_TiN_simulation.TiN_estimate.txt
+      10_percent_TiN_simulation.TiN_estimate_CI.txt
+      10_percent_TiN_simulation.deTiN_SSNVs.txt
+      10_percent_TiN_simulation.deTiN_aSCNAs.txt
+      10_percent_TiN_simulation.deTiN_indels.txt
+      10_percent_TiN_simulation.number_of_SSNVs_added.txt
+      10_percent_TiN_simulation_KmeansEval_plot.png
+      10_percent_TiN_simulation_KmeansEval_scatter_plot.png
+      10_percent_TiN_simulation_SSNVs_plot.eps
+      10_percent_TiN_simulation_SSNVs_plot.png
+      10_percent_TiN_simulation_TiN_hets_aSCNA_model.eps
+      10_percent_TiN_simulation_TiN_hets_aSCNA_model.png
+      10_percent_TiN_simulation_TiN_models_plot.png
+      expected_output_cat.txt
+     }
+     input=input {
+      HCC-1143_100_T-sim-final.acs.seg
+      HCC_10_90.call_stats.pon_removed.txt
+      HCC_10_90.normal.hets.tsv
+      HCC_10_90.tumor.hets.tsv
+      MuTect2.call_stats.txt
+      README.md
+      exac.pickle_high_af
+     }
+     outdir=outdir {
+      checker_detin=checker_detin {
+       outdir=outdir {
+        10_percent_TiN_simulation.TiN_estimate.txt
+        10_percent_TiN_simulation.TiN_estimate_CI.txt
+        10_percent_TiN_simulation.deTiN_SSNVs.txt
+        10_percent_TiN_simulation.deTiN_aSCNAs.txt
+        10_percent_TiN_simulation.deTiN_indels.txt
+        10_percent_TiN_simulation.number_of_SSNVs_added.txt
+        10_percent_TiN_simulation_KmeansEval_plot.png
+        10_percent_TiN_simulation_KmeansEval_scatter_plot.png
+        10_percent_TiN_simulation_SSNVs_plot.eps
+        10_percent_TiN_simulation_SSNVs_plot.png
+        10_percent_TiN_simulation_TiN_hets_aSCNA_model.eps
+        10_percent_TiN_simulation_TiN_hets_aSCNA_model.png
+        10_percent_TiN_simulation_TiN_models_plot.png
+       }
+      }
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         helper-functions
+         1.0.1
+        }
+       }
+      }
+     }
+     work=work {
+      5a=5a {
+       6c0569f10c28ff24b6f37431e91089=6c0569f10c28ff24b6f37431e91089 {
+        HCC-1143_100_T-sim-final.acs.seg
+        HCC_10_90.call_stats.pon_removed.txt
+        HCC_10_90.normal.hets.tsv
+        HCC_10_90.tumor.hets.tsv
+        MuTect2.call_stats.txt
+        exac.pickle_high_af
+        outdir=outdir {
+         10_percent_TiN_simulation.TiN_estimate.txt
+         10_percent_TiN_simulation.TiN_estimate_CI.txt
+         10_percent_TiN_simulation.deTiN_SSNVs.txt
+         10_percent_TiN_simulation.deTiN_aSCNAs.txt
+         10_percent_TiN_simulation.deTiN_indels.txt
+         10_percent_TiN_simulation.number_of_SSNVs_added.txt
+         10_percent_TiN_simulation_KmeansEval_plot.png
+         10_percent_TiN_simulation_KmeansEval_scatter_plot.png
+         10_percent_TiN_simulation_SSNVs_plot.eps
+         10_percent_TiN_simulation_SSNVs_plot.png
+         10_percent_TiN_simulation_TiN_hets_aSCNA_model.eps
+         10_percent_TiN_simulation_TiN_hets_aSCNA_model.png
+         10_percent_TiN_simulation_TiN_models_plot.png
+         output_cat.txt
+        }
+       }
+      }
+      72=72 {
+       a3ef6b6e816aed70c5eb188c263a91=a3ef6b6e816aed70c5eb188c263a91 {
+        expected_output_cat.txt
+        outdir=outdir {
+         10_percent_TiN_simulation.TiN_estimate.txt
+         10_percent_TiN_simulation.TiN_estimate_CI.txt
+         10_percent_TiN_simulation.deTiN_SSNVs.txt
+         10_percent_TiN_simulation.deTiN_aSCNAs.txt
+         10_percent_TiN_simulation.deTiN_indels.txt
+         10_percent_TiN_simulation.number_of_SSNVs_added.txt
+         10_percent_TiN_simulation_KmeansEval_plot.png
+         10_percent_TiN_simulation_KmeansEval_scatter_plot.png
+         10_percent_TiN_simulation_SSNVs_plot.eps
+         10_percent_TiN_simulation_SSNVs_plot.png
+         10_percent_TiN_simulation_TiN_hets_aSCNA_model.eps
+         10_percent_TiN_simulation_TiN_hets_aSCNA_model.png
+         10_percent_TiN_simulation_TiN_models_plot.png
+         output_cat.txt
+        }
+       }
+      }
+      bf=bf {
+       527f113f102e489a00a1f6b1668400=527f113f102e489a00a1f6b1668400 {
+        HCC-1143_100_T-sim-final.acs.seg
+        HCC_10_90.call_stats.pon_removed.txt
+        HCC_10_90.normal.hets.tsv
+        HCC_10_90.tumor.hets.tsv
+        MuTect2.call_stats.txt
+        exac.pickle_high_af
+        outdir=outdir {
+         10_percent_TiN_simulation.TiN_estimate.txt
+         10_percent_TiN_simulation.TiN_estimate_CI.txt
+         10_percent_TiN_simulation.deTiN_SSNVs.txt
+         10_percent_TiN_simulation.deTiN_aSCNAs.txt
+         10_percent_TiN_simulation.deTiN_indels.txt
+         10_percent_TiN_simulation.number_of_SSNVs_added.txt
+         10_percent_TiN_simulation_KmeansEval_plot.png
+         10_percent_TiN_simulation_KmeansEval_scatter_plot.png
+         10_percent_TiN_simulation_SSNVs_plot.eps
+         10_percent_TiN_simulation_SSNVs_plot.png
+         10_percent_TiN_simulation_TiN_hets_aSCNA_model.eps
+         10_percent_TiN_simulation_TiN_hets_aSCNA_model.png
+         10_percent_TiN_simulation_TiN_models_plot.png
+         output_cat.txt
+        }
+       }
+      }
+      c5=c5 {
+       d2b747d74e2d77c96d2899795e04e5=d2b747d74e2d77c96d2899795e04e5 {
+        expected_output_cat.txt
+        outdir=outdir {
+         10_percent_TiN_simulation.TiN_estimate.txt
+         10_percent_TiN_simulation.TiN_estimate_CI.txt
+         10_percent_TiN_simulation.deTiN_SSNVs.txt
+         10_percent_TiN_simulation.deTiN_aSCNAs.txt
+         10_percent_TiN_simulation.deTiN_indels.txt
+         10_percent_TiN_simulation.number_of_SSNVs_added.txt
+         10_percent_TiN_simulation_KmeansEval_plot.png
+         10_percent_TiN_simulation_KmeansEval_scatter_plot.png
+         10_percent_TiN_simulation_SSNVs_plot.eps
+         10_percent_TiN_simulation_SSNVs_plot.png
+         10_percent_TiN_simulation_TiN_hets_aSCNA_model.eps
+         10_percent_TiN_simulation_TiN_hets_aSCNA_model.png
+         10_percent_TiN_simulation_TiN_models_plot.png
+         output_cat.txt
+        }
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        helper-functions
+        1.0.1
+       }
+      }
+     }
+    }
+   }
+   fastqc=fastqc {
+    Dockerfile
+    main.nf
+    main.py
+    nextflow.config
+    pkg.json
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-job-1.json
+     test-job-2.json
+     expected=expected {
+      expected.C0HVY.2_r1.fq.gz.fastqc.tgz
+      expected.test_rg_3.bam.fastqc.tgz
+     }
+     input=input {
+      C0HVY.2_r1.fq.gz
+      README.md
+      test_rg_3.bam
+     }
+     outdir=outdir {
+      checker_fastqc=checker_fastqc {
+       C0HVY.2_r1.fq.gz.fastqc.tgz
+       test_rg_3.bam.fastqc.tgz
+      }
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         helper-functions
+         1.0.1
+        }
+       }
+      }
+     }
+     work=work {
+      03=03 {
+       024915b011ed7c4d138ae8949126fa=024915b011ed7c4d138ae8949126fa {
+
+
+        C0HVY.2_r1.fq.gz
+        C0HVY.2_r1.fq.gz.fastqc.tgz
+        qc_metrics.json
+        output=output {
+         C0HVY.2_r1_fastqc.html
+         C0HVY.2_r1_fastqc.zip
+        }
+       }
+      }
+      16=16 {
+       96dc1d013b668fc2c5a22797a59dd8=96dc1d013b668fc2c5a22797a59dd8 {
+        expected.test_rg_3.bam.fastqc.tgz
+        test_rg_3.bam.fastqc.tgz
+        expected=expected {
+         qc_metrics.json
+         test_rg_3_fastqc.html
+         test_rg_3_fastqc.zip
+         test_rg_3_fastqc=test_rg_3_fastqc {
+          fastqc.fo
+          fastqc_data.txt
+          fastqc_report.html
+          summary.txt
+          Icons=Icons {
+           error.png
+           fastqc_icon.png
+           tick.png
+           warning.png
+          }
+          Images=Images {
+           adapter_content.png
+           duplication_levels.png
+           per_base_n_content.png
+           per_base_quality.png
+           per_base_sequence_content.png
+           per_sequence_gc_content.png
+           per_sequence_quality.png
+           per_tile_quality.png
+           sequence_length_distribution.png
+          }
+         }
+        }
+        output=output {
+         qc_metrics.json
+         test_rg_3_fastqc.html
+         test_rg_3_fastqc.zip
+         test_rg_3_fastqc=test_rg_3_fastqc {
+          fastqc.fo
+          fastqc_data.txt
+          fastqc_report.html
+          summary.txt
+          Icons=Icons {
+           error.png
+           fastqc_icon.png
+           tick.png
+           warning.png
+          }
+          Images=Images {
+           adapter_content.png
+           duplication_levels.png
+           per_base_n_content.png
+           per_base_quality.png
+           per_base_sequence_content.png
+           per_sequence_gc_content.png
+           per_sequence_quality.png
+           per_tile_quality.png
+           sequence_length_distribution.png
+          }
+         }
+        }
+       }
+      }
+      63=63 {
+       79c8ecba667a65d8224832a87e2cc7=79c8ecba667a65d8224832a87e2cc7 {
+
+
+        qc_metrics.json
+        test_rg_3.bam
+        test_rg_3.bam.fastqc.tgz
+        output=output {
+         test_rg_3_fastqc.html
+         test_rg_3_fastqc.zip
+        }
+       }
+      }
+      93=93 {
+       a8a0f828392f444c71aeb0955fa7d7=a8a0f828392f444c71aeb0955fa7d7 {
+
+
+        C0HVY.2_r1.fq.gz
+        C0HVY.2_r1.fq.gz.fastqc.tgz
+        qc_metrics.json
+        output=output {
+         C0HVY.2_r1_fastqc.html
+         C0HVY.2_r1_fastqc.zip
+        }
+       }
+      }
+      c6=c6 {
+       5f23234ee36e6123cb0f2be04362d8=5f23234ee36e6123cb0f2be04362d8 {
+        C0HVY.2_r1.fq.gz.fastqc.tgz
+        expected.C0HVY.2_r1.fq.gz.fastqc.tgz
+        expected=expected {
+         C0HVY.2_r1_fastqc.html
+         C0HVY.2_r1_fastqc.zip
+         qc_metrics.json
+         C0HVY.2_r1_fastqc=C0HVY.2_r1_fastqc {
+          fastqc.fo
+          fastqc_data.txt
+          fastqc_report.html
+          summary.txt
+          Icons=Icons {
+           error.png
+           fastqc_icon.png
+           tick.png
+           warning.png
+          }
+          Images=Images {
+           adapter_content.png
+           duplication_levels.png
+           per_base_n_content.png
+           per_base_quality.png
+           per_base_sequence_content.png
+           per_sequence_gc_content.png
+           per_sequence_quality.png
+           per_tile_quality.png
+           sequence_length_distribution.png
+          }
+         }
+        }
+        output=output {
+         C0HVY.2_r1_fastqc.html
+         C0HVY.2_r1_fastqc.zip
+         qc_metrics.json
+         C0HVY.2_r1_fastqc=C0HVY.2_r1_fastqc {
+          fastqc.fo
+          fastqc_data.txt
+          fastqc_report.html
+          summary.txt
+          Icons=Icons {
+           error.png
+           fastqc_icon.png
+           tick.png
+           warning.png
+          }
+          Images=Images {
+           adapter_content.png
+           duplication_levels.png
+           per_base_n_content.png
+           per_base_quality.png
+           per_base_sequence_content.png
+           per_sequence_gc_content.png
+           per_sequence_quality.png
+           per_tile_quality.png
+           sequence_length_distribution.png
+          }
+         }
+        }
+       }
+      }
+      d2=d2 {
+       8f4074aed16571129bfb03f65feee5=8f4074aed16571129bfb03f65feee5 {
+        C0HVY.2_r1.fq.gz.fastqc.tgz
+        expected.C0HVY.2_r1.fq.gz.fastqc.tgz
+        expected=expected {
+         C0HVY.2_r1_fastqc.html
+         C0HVY.2_r1_fastqc.zip
+         qc_metrics.json
+         C0HVY.2_r1_fastqc=C0HVY.2_r1_fastqc {
+          fastqc.fo
+          fastqc_data.txt
+          fastqc_report.html
+          summary.txt
+          Icons=Icons {
+           error.png
+           fastqc_icon.png
+           tick.png
+           warning.png
+          }
+          Images=Images {
+           adapter_content.png
+           duplication_levels.png
+           per_base_n_content.png
+           per_base_quality.png
+           per_base_sequence_content.png
+           per_sequence_gc_content.png
+           per_sequence_quality.png
+           per_tile_quality.png
+           sequence_length_distribution.png
+          }
+         }
+        }
+        output=output {
+         C0HVY.2_r1_fastqc.html
+         C0HVY.2_r1_fastqc.zip
+         qc_metrics.json
+         C0HVY.2_r1_fastqc=C0HVY.2_r1_fastqc {
+          fastqc.fo
+          fastqc_data.txt
+          fastqc_report.html
+          summary.txt
+          Icons=Icons {
+           error.png
+           fastqc_icon.png
+           tick.png
+           warning.png
+          }
+          Images=Images {
+           adapter_content.png
+           duplication_levels.png
+           per_base_n_content.png
+           per_base_quality.png
+           per_base_sequence_content.png
+           per_sequence_gc_content.png
+           per_sequence_quality.png
+           per_tile_quality.png
+           sequence_length_distribution.png
+          }
+         }
+        }
+       }
+      }
+      f4=f4 {
+       d04eb2354c624e18b126bf006e99e5=d04eb2354c624e18b126bf006e99e5 {
+        expected.test_rg_3.bam.fastqc.tgz
+        test_rg_3.bam.fastqc.tgz
+        expected=expected {
+         qc_metrics.json
+         test_rg_3_fastqc.html
+         test_rg_3_fastqc.zip
+         test_rg_3_fastqc=test_rg_3_fastqc {
+          fastqc.fo
+          fastqc_data.txt
+          fastqc_report.html
+          summary.txt
+          Icons=Icons {
+           error.png
+           fastqc_icon.png
+           tick.png
+           warning.png
+          }
+          Images=Images {
+           adapter_content.png
+           duplication_levels.png
+           per_base_n_content.png
+           per_base_quality.png
+           per_base_sequence_content.png
+           per_sequence_gc_content.png
+           per_sequence_quality.png
+           per_tile_quality.png
+           sequence_length_distribution.png
+          }
+         }
+        }
+        output=output {
+         qc_metrics.json
+         test_rg_3_fastqc.html
+         test_rg_3_fastqc.zip
+         test_rg_3_fastqc=test_rg_3_fastqc {
+          fastqc.fo
+          fastqc_data.txt
+          fastqc_report.html
+          summary.txt
+          Icons=Icons {
+           error.png
+           fastqc_icon.png
+           tick.png
+           warning.png
+          }
+          Images=Images {
+           adapter_content.png
+           duplication_levels.png
+           per_base_n_content.png
+           per_base_quality.png
+           per_base_sequence_content.png
+           per_sequence_gc_content.png
+           per_sequence_quality.png
+           per_tile_quality.png
+           sequence_length_distribution.png
+          }
+         }
+        }
+       }
+      }
+      fb=fb {
+       22c8c0b17f2baffcab2f9a647f7d6a=22c8c0b17f2baffcab2f9a647f7d6a {
+
+
+        qc_metrics.json
+        test_rg_3.bam
+        test_rg_3.bam.fastqc.tgz
+        output=output {
+         test_rg_3_fastqc.html
+         test_rg_3_fastqc.zip
+        }
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        helper-functions
+        1.0.1
+       }
+      }
+     }
+    }
+   }
+   picard-collect-hs-metrics=picard-collect-hs-metrics {
+    Dockerfile
+    README.md
+    main.nf
+    main.py
+    main.sh
+    nextflow.config
+    pkg.json
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-job-1.json
+     expected=expected {
+      expected.test.WES.hs_metrics.tgz
+     }
+     input=input {
+      README.md
+      test.Covered.interval
+      test.Padded.interval
+      test.WES.cram
+      test.chr17_1-100k.fasta.gz
+      test.chr17_1-100k.fasta.gz.fai
+      test.chr17_1-100k.fasta.gz.gzi
+     }
+     outdir=outdir {
+      checker_picardCollectHsMetrics=checker_picardCollectHsMetrics {
+       test.WES.hs_metrics.tgz
+      }
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         helper-functions
+         1.0.1
+        }
+       }
+      }
+     }
+     work=work {
+      0e=0e {
+       b458b498eee2710d5391f143f99644=b458b498eee2710d5391f143f99644 {
+        expected.test.WES.hs_metrics.tgz
+        normalized_expected
+        normalized_output
+        test.WES.hs_metrics.tgz
+        expected=expected {
+         hs_metrics.json
+         tar_content.json
+         test.WES.hs_metrics.txt
+        }
+        output=output {
+         hs_metrics.json
+         tar_content.json
+         test.WES.hs_metrics.txt
+        }
+       }
+      }
+      6f=6f {
+       843702a14dbdc49e9db3c1337ddf33=843702a14dbdc49e9db3c1337ddf33 {
+        hs_metrics.json
+        tar_content.json
+        test.Covered.interval
+        test.Padded.interval
+        test.WES.cram
+        test.WES.hs_metrics.tgz
+        test.WES.hs_metrics.txt
+        test.chr17_1-100k.fasta.gz
+        test.chr17_1-100k.fasta.gz.fai
+        test.chr17_1-100k.fasta.gz.gzi
+       }
+      }
+      7c=7c {
+       6b056f334deb70fe9ca77314063582=6b056f334deb70fe9ca77314063582 {
+        expected.test.WES.hs_metrics.tgz
+        normalized_expected
+        normalized_output
+        test.WES.hs_metrics.tgz
+        expected=expected {
+         hs_metrics.json
+         tar_content.json
+         test.WES.hs_metrics.txt
+        }
+        output=output {
+         hs_metrics.json
+         tar_content.json
+         test.WES.hs_metrics.txt
+        }
+       }
+      }
+      f1=f1 {
+       6902ee8d8e4b3dd654372fe2a5cd87=6902ee8d8e4b3dd654372fe2a5cd87 {
+        hs_metrics.json
+        tar_content.json
+        test.Covered.interval
+        test.Padded.interval
+        test.WES.cram
+        test.WES.hs_metrics.tgz
+        test.WES.hs_metrics.txt
+        test.chr17_1-100k.fasta.gz
+        test.chr17_1-100k.fasta.gz.fai
+        test.chr17_1-100k.fasta.gz.gzi
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        helper-functions
+        1.0.1
+       }
+      }
+     }
+    }
+   }
+   picard-collect-rna-seq-metrics=picard-collect-rna-seq-metrics {
+    Dockerfile
+    README.md
+    main.nf
+    main.py
+    make_rRNA.sh
+    nextflow.config
+    pkg.json
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-job-1.json
+     test-job-2.json
+     expected=expected {
+      expected.sample_01_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+      expected.sample_02_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+     }
+     input=input {
+      GRCh38.rRNA.interval_list
+      README.md
+      refFlat.hg38.txt.gz
+      sample_01_L1_Aligned.out.bam
+      sample_02_L1_Aligned.out.bam
+     }
+     outdir=outdir {
+      checker_picardCollectRnaSeqMetrics=checker_picardCollectRnaSeqMetrics {
+       sample_01_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+       sample_02_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+      }
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         helper-functions
+         1.0.1
+        }
+       }
+      }
+     }
+     work=work {
+      23=23 {
+       fc7e5876d8eb0bad7485e4445b3557=fc7e5876d8eb0bad7485e4445b3557 {
+        qc_metrics.json
+        refFlat.txt.gz
+        sample_01_L1_Aligned.out.bam
+        sample_01_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        output=output {
+         rna_metrics.txt
+        }
+       }
+      }
+      9d=9d {
+       7bae409d4213b3c9e45693b741f52e=7bae409d4213b3c9e45693b741f52e {
+        expected.sample_02_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        sample_02_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        expected=expected {
+         qc_metrics.json
+         rna_metrics.txt
+        }
+        output=output {
+         qc_metrics.json
+         rna_metrics.txt
+        }
+       }
+      }
+      a4=a4 {
+       41ad1e52e745c18b4a631ec99d36f5=41ad1e52e745c18b4a631ec99d36f5 {
+        GRCh38.rRNA.interval_list
+        qc_metrics.json
+        refFlat.hg38.txt.gz
+        sample_02_L1_Aligned.out.bam
+        sample_02_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        output=output {
+         rna_metrics.txt
+        }
+       }
+      }
+      be=be {
+       8ee17f56f2c668293335e9f2107e2e=8ee17f56f2c668293335e9f2107e2e {
+        expected.sample_02_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        sample_02_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        expected=expected {
+         qc_metrics.json
+         rna_metrics.txt
+        }
+        output=output {
+         qc_metrics.json
+         rna_metrics.txt
+        }
+       }
+      }
+      cb=cb {
+       5762f168b1906440805c7aeaa17127=5762f168b1906440805c7aeaa17127 {
+        GRCh38.rRNA.interval_list
+        qc_metrics.json
+        refFlat.hg38.txt.gz
+        sample_02_L1_Aligned.out.bam
+        sample_02_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        output=output {
+         rna_metrics.txt
+        }
+       }
+      }
+      dc=dc {
+       3908d8c5e87f45e4293cae9711ff6f=3908d8c5e87f45e4293cae9711ff6f {
+        expected.sample_01_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        sample_01_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        expected=expected {
+         qc_metrics.json
+         rna_metrics.txt
+        }
+        output=output {
+         qc_metrics.json
+         rna_metrics.txt
+        }
+       }
+       f7c3f4ba4a3382f69a297e77bd7678=f7c3f4ba4a3382f69a297e77bd7678 {
+        qc_metrics.json
+        refFlat.txt.gz
+        sample_01_L1_Aligned.out.bam
+        sample_01_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        output=output {
+         rna_metrics.txt
+        }
+       }
+      }
+      df=df {
+       855e9f873cfda5523262daeca4ffc0=855e9f873cfda5523262daeca4ffc0 {
+        expected.sample_01_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        sample_01_L1_Aligned.out.bam.collectrnaseqmetrics.tgz
+        expected=expected {
+         qc_metrics.json
+         rna_metrics.txt
+        }
+        output=output {
+         qc_metrics.json
+         rna_metrics.txt
+        }
+       }
+      }
+      stage=stage {
+       a1=a1 {
+        52f06dc0d4e65b4b2cd43eabee20a7=52f06dc0d4e65b4b2cd43eabee20a7 {
+         refFlat.txt.gz
+        }
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        helper-functions
+        1.0.1
+       }
+      }
+     }
+    }
+   }
+   samtools-stats=samtools-stats {
+    Dockerfile
+    main.nf
+    main.py
+    nextflow.config
+    pkg.json
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-job-1.json
+     expected=expected {
+      expected.SA610149.0.20200122.wgs.grch38.cram.samtools_stats.qc.tgz
+     }
+     input=input {
+      README.md
+      SA610149.0.20200122.wgs.grch38.cram
+      tiny-grch38-chr11-530001-537000.fa.gz
+      tiny-grch38-chr11-530001-537000.fa.gz.fai
+     }
+     outdir=outdir {
+      checker_samtoolsStats=checker_samtoolsStats {
+       SA610149.0.20200122.wgs.grch38.cram.samtools_stats.qc.tgz
+      }
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         helper-functions
+         1.0.1
+        }
+       }
+      }
+     }
+     work=work {
+      68=68 {
+       74b000324f3935dc5382324ea58af9=74b000324f3935dc5382324ea58af9 {
+        SA610149.0.20200122.wgs.grch38.cram
+        SA610149.0.20200122.wgs.grch38.cram.bamstat
+        SA610149.0.20200122.wgs.grch38.cram.samtools_stats.qc.tgz
+        SA610149.0.20200122.wgs.grch38.cram_C0HVY.2.bamstat
+        SA610149.0.20200122.wgs.grch38.cram_D0RE2.1.bamstat
+        SA610149.0.20200122.wgs.grch38.cram_D0RH0.2.bamstat
+        qc_metrics.json
+        tar_content.json
+        tiny-grch38-chr11-530001-537000.fa.gz
+        tiny-grch38-chr11-530001-537000.fa.gz.fai
+        tiny-grch38-chr11-530001-537000.fa.gz.gzi
+       }
+      }
+      a4=a4 {
+       28d2dfb9b2f4582e6b19c7f71b999d=28d2dfb9b2f4582e6b19c7f71b999d {
+        SA610149.0.20200122.wgs.grch38.cram.samtools_stats.qc.tgz
+        expected.SA610149.0.20200122.wgs.grch38.cram.samtools_stats.qc.tgz
+        expected=expected {
+         SA610149.0.20200122.wgs.grch38.cram.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_C0HVY.2.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_D0RE2.1.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_D0RH0.2.bamstat
+         qc_metrics.json
+         tar_content.json
+        }
+        output=output {
+         SA610149.0.20200122.wgs.grch38.cram.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_C0HVY.2.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_D0RE2.1.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_D0RH0.2.bamstat
+         qc_metrics.json
+         tar_content.json
+        }
+       }
+      }
+      ae=ae {
+       ef98ac2bf969fc4404d71967b5ef8b=ef98ac2bf969fc4404d71967b5ef8b {
+        SA610149.0.20200122.wgs.grch38.cram.samtools_stats.qc.tgz
+        expected.SA610149.0.20200122.wgs.grch38.cram.samtools_stats.qc.tgz
+        expected=expected {
+         SA610149.0.20200122.wgs.grch38.cram.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_C0HVY.2.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_D0RE2.1.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_D0RH0.2.bamstat
+         qc_metrics.json
+         tar_content.json
+        }
+        output=output {
+         SA610149.0.20200122.wgs.grch38.cram.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_C0HVY.2.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_D0RE2.1.bamstat
+         SA610149.0.20200122.wgs.grch38.cram_D0RH0.2.bamstat
+         qc_metrics.json
+         tar_content.json
+        }
+       }
+      }
+      cb=cb {
+       102ad28f52706f644b1ea1f80a98e0=102ad28f52706f644b1ea1f80a98e0 {
+        SA610149.0.20200122.wgs.grch38.cram
+        SA610149.0.20200122.wgs.grch38.cram.bamstat
+        SA610149.0.20200122.wgs.grch38.cram.samtools_stats.qc.tgz
+        SA610149.0.20200122.wgs.grch38.cram_C0HVY.2.bamstat
+        SA610149.0.20200122.wgs.grch38.cram_D0RE2.1.bamstat
+        SA610149.0.20200122.wgs.grch38.cram_D0RH0.2.bamstat
+        qc_metrics.json
+        tar_content.json
+        tiny-grch38-chr11-530001-537000.fa.gz
+        tiny-grch38-chr11-530001-537000.fa.gz.fai
+        tiny-grch38-chr11-530001-537000.fa.gz.gzi
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        helper-functions
+        1.0.1
+       }
+      }
+     }
+    }
+   }
+   scripts=scripts {
+    cleanup_temp_files.sh
+    prepare_package_release_json.py
+   }
+   test_data=test_data {
+    README.md
+   }
+   wfpr_modules=wfpr_modules {
+    README.md
+    github.com=github.com {
+     icgc-argo=icgc-argo {
+      data-processing-utility-tools=data-processing-utility-tools {
+       helper-functions
+       1.0.1
+      }
+     }
+    }
+   }
+  }
+  dna-seq-processing-wfs=dna-seq-processing-wfs {
+   LICENSE
+   LICENSE-short
+   README.md
+   example-params.json
+   main.nf
+   nextflow.config
+   dna-seq-alignment=dna-seq-alignment {
+    main.nf
+    nextflow.config
+    pkg.json
+    modules=modules {
+     README.md
+     raw.githubusercontent.com=raw.githubusercontent.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        metadata-parser.0.1.0.0=metadata-parser.0.1.0.0 {
+         tools=tools {
+          metadata-parser=metadata-parser {
+           metadata-parser.nf
+          }
+         }
+        }
+       }
+       data-qc-tools-and-wfs=data-qc-tools-and-wfs {
+        aligned-seq-qc.0.2.2.1=aligned-seq-qc.0.2.2.1 {
+         tools=tools {
+          aligned-seq-qc=aligned-seq-qc {
+           aligned-seq-qc.nf
+          }
+         }
+        }
+        read-group-ubam-qc.0.1.2.0=read-group-ubam-qc.0.1.2.0 {
+         tools=tools {
+          read-group-ubam-qc=read-group-ubam-qc {
+           read-group-ubam-qc.nf
+          }
+         }
+        }
+       }
+       dna-seq-processing-tools=dna-seq-processing-tools {
+        seq-data-to-lane-bam.0.3.3.0=seq-data-to-lane-bam.0.3.3.0 {
+         tools=tools {
+          seq-data-to-lane-bam=seq-data-to-lane-bam {
+           seq-data-to-lane-bam.nf
+          }
+         }
+        }
+       }
+       gatk-tools=gatk-tools {
+        gatk-collect-oxog-metrics.4.1.8.0-3.0=gatk-collect-oxog-metrics.4.1.8.0-3.0 {
+         tools=tools {
+          gatk-collect-oxog-metrics=gatk-collect-oxog-metrics {
+           gatk-collect-oxog-metrics.nf
+          }
+         }
+        }
+        gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+         tools=tools {
+          gatk-split-intervals=gatk-split-intervals {
+           gatk-split-intervals.nf
+          }
+         }
+        }
+       }
+       nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+        2.3.0=2.3.0 {
+         process=process {
+          cleanup-workdir.nf
+         }
+        }
+       }
+      }
+     }
+    }
+    tests=tests {
+     checker.nf
+     local-test-bam.json
+     local-test-fq.json
+     nextflow.config
+     test-local_2bams.1.json
+     test-local_2bams.json
+     test-local_2bams_2fqs.json
+     test-local_bam.json
+     test-local_bam.meta_tsv.json
+     test-local_fq-se.json
+     test-local_fq.json
+     data=data {
+      2e46fd12-a5fc-4d72-86fd-12a5fcbd7216.sequencing_experiment.json
+      3e46fd12-a5fc-4d72-86fd-12a5fcbd7216.sequencing_experiment.json
+      83185fe5-71cc-4515-bc75-e94d15ba291a.sequencing_experiment-se.json
+      83185fe5-71cc-4515-bc75-e94d15ba291a.sequencing_experiment.json
+      C0HVY.2_r1.fq.gz
+      C0HVY.2_r2.fq.gz
+      D0RE2.1_r1.fq.gz
+      D0RE2.1_r2.fq.gz
+      D0RH0.2_r1.fq.gz
+      D0RH0.2_r2.fq.gz
+      README.md
+      ee46fd12-a5fc-4d72-86fd-12a5fcbd7216.sequencing_experiment.json
+      experiment.tsv
+      extra_info.tsv
+      file.tsv
+      read_group.tsv
+      test_rg_3.v2.bam
+      test_rg_3_2.v2.bam
+      mini-cell-line=mini-cell-line {
+       HCC1143.11-530218-544918.bam
+       HCC1143_BL.11-530218-544918.bam
+       experiment.HCC1143.tsv
+       experiment.HCC1143_BL.tsv
+       file.HCC1143.tsv
+       file.HCC1143_BL.tsv
+       read_group.HCC1143.tsv
+       read_group.HCC1143_BL.tsv
+      }
+     }
+     reference=reference {
+      tiny-grch38-chr11-530001-537000.dict
+      tiny-grch38-chr11-530001-537000.fa
+      tiny-grch38-chr11-530001-537000.fa.fai
+      tiny-grch38-chr11-530001-537000.fa.gz
+      tiny-grch38-chr11-530001-537000.fa.gz.alt
+      tiny-grch38-chr11-530001-537000.fa.gz.amb
+      tiny-grch38-chr11-530001-537000.fa.gz.ann
+      tiny-grch38-chr11-530001-537000.fa.gz.bwt
+      tiny-grch38-chr11-530001-537000.fa.gz.fai
+      tiny-grch38-chr11-530001-537000.fa.gz.gzi
+      tiny-grch38-chr11-530001-537000.fa.gz.pac
+      tiny-grch38-chr11-530001-537000.fa.gz.sa
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         helper-functions
+         1.0.1
+         payload-gen-dna-alignment
+         0.4.0
+         payload-gen-dna-seq-qc
+         0.6.0
+         payload-gen-seq-experiment
+         0.5.0
+        }
+        dna-seq-processing-tools=dna-seq-processing-tools {
+         bam-merge-sort-markdup
+         0.2.0
+         bwa-mem-aligner
+         0.2.0
+        }
+        nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+         song-score-download
+         2.6.2
+         song-score-upload
+         2.6.1
+        }
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        helper-functions
+        1.0.1
+        payload-gen-dna-alignment
+        0.4.0
+        payload-gen-dna-seq-qc
+        0.6.0
+        payload-gen-seq-experiment
+        0.5.0
+       }
+       dna-seq-processing-tools=dna-seq-processing-tools {
+        bam-merge-sort-markdup
+        0.2.0
+        bwa-mem-aligner
+        0.2.0
+       }
+       nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+        song-score-download
+        2.6.2
+        song-score-upload
+        2.6.1
+       }
+      }
+     }
+    }
+   }
+   modules=modules {
+    README.md
+    raw.githubusercontent.com=raw.githubusercontent.com {
+     icgc-argo=icgc-argo {
+      data-processing-utility-tools=data-processing-utility-tools {
+       metadata-parser.0.1.0.0=metadata-parser.0.1.0.0 {
+        tools=tools {
+         metadata-parser=metadata-parser {
+          metadata-parser.nf
+         }
+        }
+       }
+      }
+      data-qc-tools-and-wfs=data-qc-tools-and-wfs {
+       aligned-seq-qc.0.2.2.1=aligned-seq-qc.0.2.2.1 {
+        tools=tools {
+         aligned-seq-qc=aligned-seq-qc {
+          aligned-seq-qc.nf
+         }
+        }
+       }
+       read-group-ubam-qc.0.1.2.0=read-group-ubam-qc.0.1.2.0 {
+        tools=tools {
+         read-group-ubam-qc=read-group-ubam-qc {
+          read-group-ubam-qc.nf
+         }
+        }
+       }
+      }
+      dna-seq-processing-tools=dna-seq-processing-tools {
+       seq-data-to-lane-bam.0.3.3.0=seq-data-to-lane-bam.0.3.3.0 {
+        tools=tools {
+         seq-data-to-lane-bam=seq-data-to-lane-bam {
+          seq-data-to-lane-bam.nf
+         }
+        }
+       }
+      }
+      gatk-tools=gatk-tools {
+       gatk-collect-oxog-metrics.4.1.8.0-3.0=gatk-collect-oxog-metrics.4.1.8.0-3.0 {
+        tools=tools {
+         gatk-collect-oxog-metrics=gatk-collect-oxog-metrics {
+          gatk-collect-oxog-metrics.nf
+         }
+        }
+       }
+       gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+        tools=tools {
+         gatk-split-intervals=gatk-split-intervals {
+          gatk-split-intervals.nf
+         }
+        }
+       }
+      }
+      nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+       2.3.0=2.3.0 {
+        process=process {
+         cleanup-workdir.nf
+        }
+       }
+      }
+     }
+    }
+   }
+   scripts=scripts {
+    cleanup_temp_files.sh
+    install-modules.py
+    prepare_package_release_json.py
+   }
+   tests=tests {
+    README.md
+    conftest.py
+    requirements-test.txt
+    test_workflows.py
+    data=data {
+     2e46fd12-a5fc-4d72-86fd-12a5fcbd7216.sequencing_experiment.json
+     3e46fd12-a5fc-4d72-86fd-12a5fcbd7216.sequencing_experiment.json
+     83185fe5-71cc-4515-bc75-e94d15ba291a.sequencing_experiment-se.json
+     83185fe5-71cc-4515-bc75-e94d15ba291a.sequencing_experiment.json
+     C0HVY.2_r1.fq.gz
+     C0HVY.2_r2.fq.gz
+     D0RE2.1_r1.fq.gz
+     D0RE2.1_r2.fq.gz
+     D0RH0.2_r1.fq.gz
+     D0RH0.2_r2.fq.gz
+     README.md
+     ee46fd12-a5fc-4d72-86fd-12a5fcbd7216.sequencing_experiment.json
+     experiment.tsv
+     extra_info.tsv
+     file.tsv
+     read_group.tsv
+     test_rg_3.v2.bam
+     test_rg_3_2.v2.bam
+     mini-cell-line=mini-cell-line {
+      HCC1143.11-530218-544918.bam
+      HCC1143_BL.11-530218-544918.bam
+      experiment.HCC1143.tsv
+      experiment.HCC1143_BL.tsv
+      file.HCC1143.tsv
+      file.HCC1143_BL.tsv
+      read_group.HCC1143.tsv
+      read_group.HCC1143_BL.tsv
+     }
+    }
+    reference=reference {
+     tiny-grch38-chr11-530001-537000.dict
+     tiny-grch38-chr11-530001-537000.fa
+     tiny-grch38-chr11-530001-537000.fa.fai
+     tiny-grch38-chr11-530001-537000.fa.gz
+     tiny-grch38-chr11-530001-537000.fa.gz.alt
+     tiny-grch38-chr11-530001-537000.fa.gz.amb
+     tiny-grch38-chr11-530001-537000.fa.gz.ann
+     tiny-grch38-chr11-530001-537000.fa.gz.bwt
+     tiny-grch38-chr11-530001-537000.fa.gz.fai
+     tiny-grch38-chr11-530001-537000.fa.gz.gzi
+     tiny-grch38-chr11-530001-537000.fa.gz.pac
+     tiny-grch38-chr11-530001-537000.fa.gz.sa
+    }
+   }
+   wfpr_modules=wfpr_modules {
+    README.md
+    github.com=github.com {
+     icgc-argo=icgc-argo {
+      data-processing-utility-tools=data-processing-utility-tools {
+       helper-functions
+       1.0.1
+       payload-gen-dna-alignment
+       0.4.0
+       payload-gen-dna-seq-qc
+       0.6.0
+       payload-gen-seq-experiment
+       0.5.0
+      }
+      dna-seq-processing-tools=dna-seq-processing-tools {
+       bam-merge-sort-markdup
+       0.2.0
+       bwa-mem-aligner
+       0.2.0
+      }
+      nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+       song-score-download
+       2.6.2
+       song-score-upload
+       2.6.1
+      }
+     }
+    }
+   }
+  }
+  gatk-mutect2-variant-calling=gatk-mutect2-variant-calling {
+   LICENSE
+   LICENSE-short
+   LICENSE.txt
+   README.md
+   example-params.json
+   main.nf
+   nextflow.config
+   assets=assets {
+    bqsr.sequence_grouping.grch38_hla_decoy_ebv.csv
+    bqsr.sequence_grouping_with_unmapped.grch38_hla_decoy_ebv.csv
+    mutect2.scatter_by_chr=mutect2.scatter_by_chr {
+     chr1.interval_list
+     chr10.interval_list
+     chr11.interval_list
+     chr12.interval_list
+     chr13.interval_list
+     chr14.interval_list
+     chr15.interval_list
+     chr16.interval_list
+     chr17.interval_list
+     chr18.interval_list
+     chr19.interval_list
+     chr2.interval_list
+     chr20.interval_list
+     chr21.interval_list
+     chr22.interval_list
+     chr3.interval_list
+     chr4.interval_list
+     chr5.interval_list
+     chr6.interval_list
+     chr7.interval_list
+     chr8.interval_list
+     chr9.interval_list
+     chrXY.interval_list
+    }
+    mutect2.scatter_by_intervals=mutect2.scatter_by_intervals {
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0001_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0002_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0003_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0004_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0005_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0006_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0007_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0008_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0009_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0010_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0011_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0012_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0013_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0014_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0015_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0016_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0017_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0018_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0019_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0020_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0021_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0022_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0023_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0024_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0025_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0026_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0027_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0028_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0029_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0030_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0031_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0032_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0033_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0034_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0035_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0036_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0037_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0038_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0039_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0040_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0041_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0042_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0043_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0044_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0045_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0046_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0047_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0048_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0049_of_50_scattered.interval_list
+     resources_broad_hg38_v0_scattered_calling_intervals_temp_0050_of_50_scattered.interval_list
+    }
+   }
+   bqsr=bqsr {
+    README.md
+    bqsr.nf
+    nextflow.config
+    modules=modules {
+     README.md
+     raw.githubusercontent.com=raw.githubusercontent.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+         tools=tools {
+          prep-mutect2-qc=prep-mutect2-qc {
+           prep-mutect2-qc.nf
+          }
+         }
+        }
+       }
+       gatk-tools=gatk-tools {
+        gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-apply-bqsr=gatk-apply-bqsr {
+           gatk-apply-bqsr.nf
+          }
+         }
+        }
+        gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-base-recalibrator=gatk-base-recalibrator {
+           gatk-base-recalibrator.nf
+          }
+         }
+        }
+        gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+         tools=tools {
+          gatk-calculate-contamination=gatk-calculate-contamination {
+           gatk-calculate-contamination.nf
+          }
+         }
+        }
+        gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+         tools=tools {
+          gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+           gatk-filter-mutect-calls.nf
+          }
+         }
+        }
+        gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-gather-bam-files=gatk-gather-bam-files {
+           gatk-gather-bam-files.nf
+          }
+         }
+        }
+        gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+           gatk-gather-bqsr-reports.nf
+          }
+         }
+        }
+        gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+         tools=tools {
+          gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+           gatk-gather-pileup-summaries.nf
+          }
+         }
+        }
+        gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+         tools=tools {
+          gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+           gatk-get-pileup-summaries.nf
+          }
+         }
+        }
+        gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+         tools=tools {
+          gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+           gatk-learn-read-orientation-model.nf
+          }
+         }
+        }
+        gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+         tools=tools {
+          gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+           gatk-merge-mutect-stats.nf
+          }
+         }
+        }
+        gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+         tools=tools {
+          gatk-merge-vcfs=gatk-merge-vcfs {
+           gatk-merge-vcfs.nf
+          }
+         }
+        }
+        gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+         tools=tools {
+          gatk-mutect2=gatk-mutect2 {
+           gatk-mutect2.nf
+          }
+         }
+        }
+        gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-select-variants=gatk-select-variants {
+           gatk-select-variants.nf
+          }
+         }
+        }
+        gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+         tools=tools {
+          gatk-split-intervals=gatk-split-intervals {
+           gatk-split-intervals.nf
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-1.nf.json
+     test-2.nf.json
+     data=data {
+      0000-inervals.bed
+      0000-scattered.interval_list
+      0001-inervals.bed
+      0001-scattered.interval_list
+      0002-scattered.interval_list
+      SA610149.0.20200122.wgs.grch38.cram
+      SA610149.0.20200122.wgs.grch38.cram.crai
+      my-intervals.bed
+      HCC1143-mini-Mutect2-calls=HCC1143-mini-Mutect2-calls {
+       HCC1143.mutect2.copy.vcf.gz
+       HCC1143.mutect2.copy.vcf.gz.stats
+       HCC1143.mutect2.copy.vcf.gz.tbi
+       HCC1143.mutect2.vcf.gz
+       HCC1143.mutect2.vcf.gz.stats
+       HCC1143.mutect2.vcf.gz.tbi
+      }
+      HCC1143-mini-T=HCC1143-mini-T {
+       8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam
+       8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam.bai
+       HCC1143.f1r2.tar.gz
+       pileups.table
+      }
+      HCC1143_BL-mini-N=HCC1143_BL-mini-N {
+       cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam
+       cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam.bai
+       pileups.table
+      }
+     }
+     modules=modules {
+      README.md
+      raw.githubusercontent.com=raw.githubusercontent.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+          tools=tools {
+           prep-mutect2-qc=prep-mutect2-qc {
+            prep-mutect2-qc.nf
+           }
+          }
+         }
+        }
+        gatk-tools=gatk-tools {
+         gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-apply-bqsr=gatk-apply-bqsr {
+            gatk-apply-bqsr.nf
+           }
+          }
+         }
+         gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-base-recalibrator=gatk-base-recalibrator {
+            gatk-base-recalibrator.nf
+           }
+          }
+         }
+         gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+          tools=tools {
+           gatk-calculate-contamination=gatk-calculate-contamination {
+            gatk-calculate-contamination.nf
+           }
+          }
+         }
+         gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+          tools=tools {
+           gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+            gatk-filter-mutect-calls.nf
+           }
+          }
+         }
+         gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-gather-bam-files=gatk-gather-bam-files {
+            gatk-gather-bam-files.nf
+           }
+          }
+         }
+         gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+            gatk-gather-bqsr-reports.nf
+           }
+          }
+         }
+         gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+          tools=tools {
+           gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+            gatk-gather-pileup-summaries.nf
+           }
+          }
+         }
+         gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+          tools=tools {
+           gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+            gatk-get-pileup-summaries.nf
+           }
+          }
+         }
+         gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+            gatk-learn-read-orientation-model.nf
+           }
+          }
+         }
+         gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+            gatk-merge-mutect-stats.nf
+           }
+          }
+         }
+         gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-merge-vcfs=gatk-merge-vcfs {
+            gatk-merge-vcfs.nf
+           }
+          }
+         }
+         gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+          tools=tools {
+           gatk-mutect2=gatk-mutect2 {
+            gatk-mutect2.nf
+           }
+          }
+         }
+         gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-select-variants=gatk-select-variants {
+            gatk-select-variants.nf
+           }
+          }
+         }
+         gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+          tools=tools {
+           gatk-split-intervals=gatk-split-intervals {
+            gatk-split-intervals.nf
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     reference=reference {
+      tiny-chr11-exac_common_3.hg38.vcf.gz
+      tiny-chr11-exac_common_3.hg38.vcf.gz.tbi
+      tiny-grch38-chr11-530001-537000.dict
+      tiny-grch38-chr11-530001-537000.fa
+      tiny-grch38-chr11-530001-537000.fa.fai
+      tiny-grch38-chr11-530001-537000.fa.gz
+      tiny-grch38-chr11-530001-537000.fa.gz.alt
+      tiny-grch38-chr11-530001-537000.fa.gz.amb
+      tiny-grch38-chr11-530001-537000.fa.gz.ann
+      tiny-grch38-chr11-530001-537000.fa.gz.bwt
+      tiny-grch38-chr11-530001-537000.fa.gz.fai
+      tiny-grch38-chr11-530001-537000.fa.gz.gzi
+      tiny-grch38-chr11-530001-537000.fa.gz.pac
+      tiny-grch38-chr11-530001-537000.fa.gz.sa
+      tiny-grch38-chr11-530001-537000.fa.img
+     }
+    }
+   }
+   calculate-contamination=calculate-contamination {
+    README.md
+    calculate-contamination.nf
+    nextflow.config
+    modules=modules {
+     README.md
+     raw.githubusercontent.com=raw.githubusercontent.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+         tools=tools {
+          prep-mutect2-qc=prep-mutect2-qc {
+           prep-mutect2-qc.nf
+          }
+         }
+        }
+       }
+       gatk-tools=gatk-tools {
+        gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-apply-bqsr=gatk-apply-bqsr {
+           gatk-apply-bqsr.nf
+          }
+         }
+        }
+        gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-base-recalibrator=gatk-base-recalibrator {
+           gatk-base-recalibrator.nf
+          }
+         }
+        }
+        gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+         tools=tools {
+          gatk-calculate-contamination=gatk-calculate-contamination {
+           gatk-calculate-contamination.nf
+          }
+         }
+        }
+        gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+         tools=tools {
+          gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+           gatk-filter-mutect-calls.nf
+          }
+         }
+        }
+        gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-gather-bam-files=gatk-gather-bam-files {
+           gatk-gather-bam-files.nf
+          }
+         }
+        }
+        gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+           gatk-gather-bqsr-reports.nf
+          }
+         }
+        }
+        gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+         tools=tools {
+          gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+           gatk-gather-pileup-summaries.nf
+          }
+         }
+        }
+        gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+         tools=tools {
+          gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+           gatk-get-pileup-summaries.nf
+          }
+         }
+        }
+        gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+         tools=tools {
+          gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+           gatk-learn-read-orientation-model.nf
+          }
+         }
+        }
+        gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+         tools=tools {
+          gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+           gatk-merge-mutect-stats.nf
+          }
+         }
+        }
+        gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+         tools=tools {
+          gatk-merge-vcfs=gatk-merge-vcfs {
+           gatk-merge-vcfs.nf
+          }
+         }
+        }
+        gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+         tools=tools {
+          gatk-mutect2=gatk-mutect2 {
+           gatk-mutect2.nf
+          }
+         }
+        }
+        gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-select-variants=gatk-select-variants {
+           gatk-select-variants.nf
+          }
+         }
+        }
+        gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+         tools=tools {
+          gatk-split-intervals=gatk-split-intervals {
+           gatk-split-intervals.nf
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    tests=tests {
+     checker.nf
+     nextflow.config
+     test-1.nf.json
+     test-2.nf.json
+     data=data {
+      0000-inervals.bed
+      0000-scattered.interval_list
+      0001-inervals.bed
+      0001-scattered.interval_list
+      0002-scattered.interval_list
+      SA610149.0.20200122.wgs.grch38.cram
+      SA610149.0.20200122.wgs.grch38.cram.crai
+      my-intervals.bed
+      HCC1143-mini-Mutect2-calls=HCC1143-mini-Mutect2-calls {
+       HCC1143.mutect2.copy.vcf.gz
+       HCC1143.mutect2.copy.vcf.gz.stats
+       HCC1143.mutect2.copy.vcf.gz.tbi
+       HCC1143.mutect2.vcf.gz
+       HCC1143.mutect2.vcf.gz.stats
+       HCC1143.mutect2.vcf.gz.tbi
+      }
+      HCC1143-mini-T=HCC1143-mini-T {
+       8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam
+       8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam.bai
+       HCC1143.f1r2.tar.gz
+       pileups.table
+      }
+      HCC1143_BL-mini-N=HCC1143_BL-mini-N {
+       cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam
+       cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam.bai
+       pileups.table
+      }
+     }
+     modules=modules {
+      README.md
+      raw.githubusercontent.com=raw.githubusercontent.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+          tools=tools {
+           prep-mutect2-qc=prep-mutect2-qc {
+            prep-mutect2-qc.nf
+           }
+          }
+         }
+        }
+        gatk-tools=gatk-tools {
+         gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-apply-bqsr=gatk-apply-bqsr {
+            gatk-apply-bqsr.nf
+           }
+          }
+         }
+         gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-base-recalibrator=gatk-base-recalibrator {
+            gatk-base-recalibrator.nf
+           }
+          }
+         }
+         gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+          tools=tools {
+           gatk-calculate-contamination=gatk-calculate-contamination {
+            gatk-calculate-contamination.nf
+           }
+          }
+         }
+         gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+          tools=tools {
+           gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+            gatk-filter-mutect-calls.nf
+           }
+          }
+         }
+         gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-gather-bam-files=gatk-gather-bam-files {
+            gatk-gather-bam-files.nf
+           }
+          }
+         }
+         gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+            gatk-gather-bqsr-reports.nf
+           }
+          }
+         }
+         gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+          tools=tools {
+           gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+            gatk-gather-pileup-summaries.nf
+           }
+          }
+         }
+         gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+          tools=tools {
+           gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+            gatk-get-pileup-summaries.nf
+           }
+          }
+         }
+         gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+            gatk-learn-read-orientation-model.nf
+           }
+          }
+         }
+         gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+            gatk-merge-mutect-stats.nf
+           }
+          }
+         }
+         gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-merge-vcfs=gatk-merge-vcfs {
+            gatk-merge-vcfs.nf
+           }
+          }
+         }
+         gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+          tools=tools {
+           gatk-mutect2=gatk-mutect2 {
+            gatk-mutect2.nf
+           }
+          }
+         }
+         gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-select-variants=gatk-select-variants {
+            gatk-select-variants.nf
+           }
+          }
+         }
+         gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+          tools=tools {
+           gatk-split-intervals=gatk-split-intervals {
+            gatk-split-intervals.nf
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     reference=reference {
+      tiny-chr11-exac_common_3.hg38.vcf.gz
+      tiny-chr11-exac_common_3.hg38.vcf.gz.tbi
+      tiny-grch38-chr11-530001-537000.dict
+      tiny-grch38-chr11-530001-537000.fa
+      tiny-grch38-chr11-530001-537000.fa.fai
+      tiny-grch38-chr11-530001-537000.fa.gz
+      tiny-grch38-chr11-530001-537000.fa.gz.alt
+      tiny-grch38-chr11-530001-537000.fa.gz.amb
+      tiny-grch38-chr11-530001-537000.fa.gz.ann
+      tiny-grch38-chr11-530001-537000.fa.gz.bwt
+      tiny-grch38-chr11-530001-537000.fa.gz.fai
+      tiny-grch38-chr11-530001-537000.fa.gz.gzi
+      tiny-grch38-chr11-530001-537000.fa.gz.pac
+      tiny-grch38-chr11-530001-537000.fa.gz.sa
+      tiny-grch38-chr11-530001-537000.fa.img
+     }
+    }
+   }
+   gatk-mutect2-variant-calling=gatk-mutect2-variant-calling {
+    main.nf
+    nextflow.config
+    pkg.json
+    assets=assets {
+     bqsr.sequence_grouping.grch38_hla_decoy_ebv.csv
+     bqsr.sequence_grouping_with_unmapped.grch38_hla_decoy_ebv.csv
+     mutect2.scatter_by_chr=mutect2.scatter_by_chr {
+      chr1.interval_list
+      chr10.interval_list
+      chr11.interval_list
+      chr12.interval_list
+      chr13.interval_list
+      chr14.interval_list
+      chr15.interval_list
+      chr16.interval_list
+      chr17.interval_list
+      chr18.interval_list
+      chr19.interval_list
+      chr2.interval_list
+      chr20.interval_list
+      chr21.interval_list
+      chr22.interval_list
+      chr3.interval_list
+      chr4.interval_list
+      chr5.interval_list
+      chr6.interval_list
+      chr7.interval_list
+      chr8.interval_list
+      chr9.interval_list
+      chrXY.interval_list
+     }
+     mutect2.scatter_by_intervals=mutect2.scatter_by_intervals {
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0001_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0002_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0003_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0004_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0005_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0006_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0007_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0008_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0009_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0010_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0011_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0012_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0013_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0014_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0015_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0016_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0017_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0018_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0019_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0020_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0021_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0022_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0023_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0024_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0025_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0026_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0027_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0028_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0029_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0030_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0031_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0032_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0033_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0034_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0035_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0036_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0037_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0038_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0039_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0040_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0041_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0042_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0043_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0044_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0045_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0046_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0047_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0048_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0049_of_50_scattered.interval_list
+      resources_broad_hg38_v0_scattered_calling_intervals_temp_0050_of_50_scattered.interval_list
+     }
+    }
+    bqsr=bqsr {
+     README.md
+     bqsr.nf
+     nextflow.config
+     modules=modules {
+      README.md
+      raw.githubusercontent.com=raw.githubusercontent.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+          tools=tools {
+           prep-mutect2-qc=prep-mutect2-qc {
+            prep-mutect2-qc.nf
+           }
+          }
+         }
+        }
+        gatk-tools=gatk-tools {
+         gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-apply-bqsr=gatk-apply-bqsr {
+            gatk-apply-bqsr.nf
+           }
+          }
+         }
+         gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-base-recalibrator=gatk-base-recalibrator {
+            gatk-base-recalibrator.nf
+           }
+          }
+         }
+         gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+          tools=tools {
+           gatk-calculate-contamination=gatk-calculate-contamination {
+            gatk-calculate-contamination.nf
+           }
+          }
+         }
+         gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+          tools=tools {
+           gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+            gatk-filter-mutect-calls.nf
+           }
+          }
+         }
+         gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-gather-bam-files=gatk-gather-bam-files {
+            gatk-gather-bam-files.nf
+           }
+          }
+         }
+         gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+            gatk-gather-bqsr-reports.nf
+           }
+          }
+         }
+         gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+          tools=tools {
+           gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+            gatk-gather-pileup-summaries.nf
+           }
+          }
+         }
+         gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+          tools=tools {
+           gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+            gatk-get-pileup-summaries.nf
+           }
+          }
+         }
+         gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+            gatk-learn-read-orientation-model.nf
+           }
+          }
+         }
+         gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+            gatk-merge-mutect-stats.nf
+           }
+          }
+         }
+         gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-merge-vcfs=gatk-merge-vcfs {
+            gatk-merge-vcfs.nf
+           }
+          }
+         }
+         gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+          tools=tools {
+           gatk-mutect2=gatk-mutect2 {
+            gatk-mutect2.nf
+           }
+          }
+         }
+         gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-select-variants=gatk-select-variants {
+            gatk-select-variants.nf
+           }
+          }
+         }
+         gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+          tools=tools {
+           gatk-split-intervals=gatk-split-intervals {
+            gatk-split-intervals.nf
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     tests=tests {
+      checker.nf
+      nextflow.config
+      test-1.nf.json
+      test-2.nf.json
+      data=data {
+       0000-inervals.bed
+       0000-scattered.interval_list
+       0001-inervals.bed
+       0001-scattered.interval_list
+       0002-scattered.interval_list
+       SA610149.0.20200122.wgs.grch38.cram
+       SA610149.0.20200122.wgs.grch38.cram.crai
+       my-intervals.bed
+       HCC1143-mini-Mutect2-calls=HCC1143-mini-Mutect2-calls {
+        HCC1143.mutect2.copy.vcf.gz
+        HCC1143.mutect2.copy.vcf.gz.stats
+        HCC1143.mutect2.copy.vcf.gz.tbi
+        HCC1143.mutect2.vcf.gz
+        HCC1143.mutect2.vcf.gz.stats
+        HCC1143.mutect2.vcf.gz.tbi
+       }
+       HCC1143-mini-T=HCC1143-mini-T {
+        8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam
+        8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam.bai
+        HCC1143.f1r2.tar.gz
+        pileups.table
+       }
+       HCC1143_BL-mini-N=HCC1143_BL-mini-N {
+        cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam
+        cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam.bai
+        pileups.table
+       }
+      }
+      modules=modules {
+       README.md
+       raw.githubusercontent.com=raw.githubusercontent.com {
+        icgc-argo=icgc-argo {
+         data-processing-utility-tools=data-processing-utility-tools {
+          prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+           tools=tools {
+            prep-mutect2-qc=prep-mutect2-qc {
+             prep-mutect2-qc.nf
+            }
+           }
+          }
+         }
+         gatk-tools=gatk-tools {
+          gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-apply-bqsr=gatk-apply-bqsr {
+             gatk-apply-bqsr.nf
+            }
+           }
+          }
+          gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-base-recalibrator=gatk-base-recalibrator {
+             gatk-base-recalibrator.nf
+            }
+           }
+          }
+          gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+           tools=tools {
+            gatk-calculate-contamination=gatk-calculate-contamination {
+             gatk-calculate-contamination.nf
+            }
+           }
+          }
+          gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+           tools=tools {
+            gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+             gatk-filter-mutect-calls.nf
+            }
+           }
+          }
+          gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-gather-bam-files=gatk-gather-bam-files {
+             gatk-gather-bam-files.nf
+            }
+           }
+          }
+          gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+             gatk-gather-bqsr-reports.nf
+            }
+           }
+          }
+          gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+           tools=tools {
+            gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+             gatk-gather-pileup-summaries.nf
+            }
+           }
+          }
+          gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+           tools=tools {
+            gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+             gatk-get-pileup-summaries.nf
+            }
+           }
+          }
+          gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+           tools=tools {
+            gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+             gatk-learn-read-orientation-model.nf
+            }
+           }
+          }
+          gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+           tools=tools {
+            gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+             gatk-merge-mutect-stats.nf
+            }
+           }
+          }
+          gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+           tools=tools {
+            gatk-merge-vcfs=gatk-merge-vcfs {
+             gatk-merge-vcfs.nf
+            }
+           }
+          }
+          gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+           tools=tools {
+            gatk-mutect2=gatk-mutect2 {
+             gatk-mutect2.nf
+            }
+           }
+          }
+          gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-select-variants=gatk-select-variants {
+             gatk-select-variants.nf
+            }
+           }
+          }
+          gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+           tools=tools {
+            gatk-split-intervals=gatk-split-intervals {
+             gatk-split-intervals.nf
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      reference=reference {
+       tiny-chr11-exac_common_3.hg38.vcf.gz
+       tiny-chr11-exac_common_3.hg38.vcf.gz.tbi
+       tiny-grch38-chr11-530001-537000.dict
+       tiny-grch38-chr11-530001-537000.fa
+       tiny-grch38-chr11-530001-537000.fa.fai
+       tiny-grch38-chr11-530001-537000.fa.gz
+       tiny-grch38-chr11-530001-537000.fa.gz.alt
+       tiny-grch38-chr11-530001-537000.fa.gz.amb
+       tiny-grch38-chr11-530001-537000.fa.gz.ann
+       tiny-grch38-chr11-530001-537000.fa.gz.bwt
+       tiny-grch38-chr11-530001-537000.fa.gz.fai
+       tiny-grch38-chr11-530001-537000.fa.gz.gzi
+       tiny-grch38-chr11-530001-537000.fa.gz.pac
+       tiny-grch38-chr11-530001-537000.fa.gz.sa
+       tiny-grch38-chr11-530001-537000.fa.img
+      }
+     }
+    }
+    calculate-contamination=calculate-contamination {
+     README.md
+     calculate-contamination.nf
+     nextflow.config
+     modules=modules {
+      README.md
+      raw.githubusercontent.com=raw.githubusercontent.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+          tools=tools {
+           prep-mutect2-qc=prep-mutect2-qc {
+            prep-mutect2-qc.nf
+           }
+          }
+         }
+        }
+        gatk-tools=gatk-tools {
+         gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-apply-bqsr=gatk-apply-bqsr {
+            gatk-apply-bqsr.nf
+           }
+          }
+         }
+         gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-base-recalibrator=gatk-base-recalibrator {
+            gatk-base-recalibrator.nf
+           }
+          }
+         }
+         gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+          tools=tools {
+           gatk-calculate-contamination=gatk-calculate-contamination {
+            gatk-calculate-contamination.nf
+           }
+          }
+         }
+         gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+          tools=tools {
+           gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+            gatk-filter-mutect-calls.nf
+           }
+          }
+         }
+         gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-gather-bam-files=gatk-gather-bam-files {
+            gatk-gather-bam-files.nf
+           }
+          }
+         }
+         gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+            gatk-gather-bqsr-reports.nf
+           }
+          }
+         }
+         gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+          tools=tools {
+           gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+            gatk-gather-pileup-summaries.nf
+           }
+          }
+         }
+         gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+          tools=tools {
+           gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+            gatk-get-pileup-summaries.nf
+           }
+          }
+         }
+         gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+            gatk-learn-read-orientation-model.nf
+           }
+          }
+         }
+         gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+            gatk-merge-mutect-stats.nf
+           }
+          }
+         }
+         gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+          tools=tools {
+           gatk-merge-vcfs=gatk-merge-vcfs {
+            gatk-merge-vcfs.nf
+           }
+          }
+         }
+         gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+          tools=tools {
+           gatk-mutect2=gatk-mutect2 {
+            gatk-mutect2.nf
+           }
+          }
+         }
+         gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+          tools=tools {
+           gatk-select-variants=gatk-select-variants {
+            gatk-select-variants.nf
+           }
+          }
+         }
+         gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+          tools=tools {
+           gatk-split-intervals=gatk-split-intervals {
+            gatk-split-intervals.nf
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     tests=tests {
+      checker.nf
+      nextflow.config
+      test-1.nf.json
+      test-2.nf.json
+      data=data {
+       0000-inervals.bed
+       0000-scattered.interval_list
+       0001-inervals.bed
+       0001-scattered.interval_list
+       0002-scattered.interval_list
+       SA610149.0.20200122.wgs.grch38.cram
+       SA610149.0.20200122.wgs.grch38.cram.crai
+       my-intervals.bed
+       HCC1143-mini-Mutect2-calls=HCC1143-mini-Mutect2-calls {
+        HCC1143.mutect2.copy.vcf.gz
+        HCC1143.mutect2.copy.vcf.gz.stats
+        HCC1143.mutect2.copy.vcf.gz.tbi
+        HCC1143.mutect2.vcf.gz
+        HCC1143.mutect2.vcf.gz.stats
+        HCC1143.mutect2.vcf.gz.tbi
+       }
+       HCC1143-mini-T=HCC1143-mini-T {
+        8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam
+        8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam.bai
+        HCC1143.f1r2.tar.gz
+        pileups.table
+       }
+       HCC1143_BL-mini-N=HCC1143_BL-mini-N {
+        cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam
+        cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam.bai
+        pileups.table
+       }
+      }
+      modules=modules {
+       README.md
+       raw.githubusercontent.com=raw.githubusercontent.com {
+        icgc-argo=icgc-argo {
+         data-processing-utility-tools=data-processing-utility-tools {
+          prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+           tools=tools {
+            prep-mutect2-qc=prep-mutect2-qc {
+             prep-mutect2-qc.nf
+            }
+           }
+          }
+         }
+         gatk-tools=gatk-tools {
+          gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-apply-bqsr=gatk-apply-bqsr {
+             gatk-apply-bqsr.nf
+            }
+           }
+          }
+          gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-base-recalibrator=gatk-base-recalibrator {
+             gatk-base-recalibrator.nf
+            }
+           }
+          }
+          gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+           tools=tools {
+            gatk-calculate-contamination=gatk-calculate-contamination {
+             gatk-calculate-contamination.nf
+            }
+           }
+          }
+          gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+           tools=tools {
+            gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+             gatk-filter-mutect-calls.nf
+            }
+           }
+          }
+          gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-gather-bam-files=gatk-gather-bam-files {
+             gatk-gather-bam-files.nf
+            }
+           }
+          }
+          gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+             gatk-gather-bqsr-reports.nf
+            }
+           }
+          }
+          gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+           tools=tools {
+            gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+             gatk-gather-pileup-summaries.nf
+            }
+           }
+          }
+          gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+           tools=tools {
+            gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+             gatk-get-pileup-summaries.nf
+            }
+           }
+          }
+          gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+           tools=tools {
+            gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+             gatk-learn-read-orientation-model.nf
+            }
+           }
+          }
+          gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+           tools=tools {
+            gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+             gatk-merge-mutect-stats.nf
+            }
+           }
+          }
+          gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+           tools=tools {
+            gatk-merge-vcfs=gatk-merge-vcfs {
+             gatk-merge-vcfs.nf
+            }
+           }
+          }
+          gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+           tools=tools {
+            gatk-mutect2=gatk-mutect2 {
+             gatk-mutect2.nf
+            }
+           }
+          }
+          gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+           tools=tools {
+            gatk-select-variants=gatk-select-variants {
+             gatk-select-variants.nf
+            }
+           }
+          }
+          gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+           tools=tools {
+            gatk-split-intervals=gatk-split-intervals {
+             gatk-split-intervals.nf
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      reference=reference {
+       tiny-chr11-exac_common_3.hg38.vcf.gz
+       tiny-chr11-exac_common_3.hg38.vcf.gz.tbi
+       tiny-grch38-chr11-530001-537000.dict
+       tiny-grch38-chr11-530001-537000.fa
+       tiny-grch38-chr11-530001-537000.fa.fai
+       tiny-grch38-chr11-530001-537000.fa.gz
+       tiny-grch38-chr11-530001-537000.fa.gz.alt
+       tiny-grch38-chr11-530001-537000.fa.gz.amb
+       tiny-grch38-chr11-530001-537000.fa.gz.ann
+       tiny-grch38-chr11-530001-537000.fa.gz.bwt
+       tiny-grch38-chr11-530001-537000.fa.gz.fai
+       tiny-grch38-chr11-530001-537000.fa.gz.gzi
+       tiny-grch38-chr11-530001-537000.fa.gz.pac
+       tiny-grch38-chr11-530001-537000.fa.gz.sa
+       tiny-grch38-chr11-530001-537000.fa.img
+      }
+     }
+    }
+    modules=modules {
+     README.md
+     raw.githubusercontent.com=raw.githubusercontent.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+         tools=tools {
+          prep-mutect2-qc=prep-mutect2-qc {
+           prep-mutect2-qc.nf
+          }
+         }
+        }
+       }
+       gatk-tools=gatk-tools {
+        gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-apply-bqsr=gatk-apply-bqsr {
+           gatk-apply-bqsr.nf
+          }
+         }
+        }
+        gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-base-recalibrator=gatk-base-recalibrator {
+           gatk-base-recalibrator.nf
+          }
+         }
+        }
+        gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+         tools=tools {
+          gatk-calculate-contamination=gatk-calculate-contamination {
+           gatk-calculate-contamination.nf
+          }
+         }
+        }
+        gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+         tools=tools {
+          gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+           gatk-filter-mutect-calls.nf
+          }
+         }
+        }
+        gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-gather-bam-files=gatk-gather-bam-files {
+           gatk-gather-bam-files.nf
+          }
+         }
+        }
+        gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+           gatk-gather-bqsr-reports.nf
+          }
+         }
+        }
+        gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+         tools=tools {
+          gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+           gatk-gather-pileup-summaries.nf
+          }
+         }
+        }
+        gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+         tools=tools {
+          gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+           gatk-get-pileup-summaries.nf
+          }
+         }
+        }
+        gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+         tools=tools {
+          gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+           gatk-learn-read-orientation-model.nf
+          }
+         }
+        }
+        gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+         tools=tools {
+          gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+           gatk-merge-mutect-stats.nf
+          }
+         }
+        }
+        gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+         tools=tools {
+          gatk-merge-vcfs=gatk-merge-vcfs {
+           gatk-merge-vcfs.nf
+          }
+         }
+        }
+        gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+         tools=tools {
+          gatk-mutect2=gatk-mutect2 {
+           gatk-mutect2.nf
+          }
+         }
+        }
+        gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+         tools=tools {
+          gatk-select-variants=gatk-select-variants {
+           gatk-select-variants.nf
+          }
+         }
+        }
+        gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+         tools=tools {
+          gatk-split-intervals=gatk-split-intervals {
+           gatk-split-intervals.nf
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    tests=tests {
+     checker.nf
+     local-test.wgs.qa.json
+     local-test.wgs.vm.json
+     local-test.wxs.qa.json
+     local-test.wxs.vm.json
+     nextflow.config
+     assets=assets {
+      bqsr.sequence_grouping.grch38_hla_decoy_ebv.csv
+      bqsr.sequence_grouping_with_unmapped.grch38_hla_decoy_ebv.csv
+      mutect2.scatter_by_chr=mutect2.scatter_by_chr {
+       chr1.interval_list
+       chr10.interval_list
+       chr11.interval_list
+       chr12.interval_list
+       chr13.interval_list
+       chr14.interval_list
+       chr15.interval_list
+       chr16.interval_list
+       chr17.interval_list
+       chr18.interval_list
+       chr19.interval_list
+       chr2.interval_list
+       chr20.interval_list
+       chr21.interval_list
+       chr22.interval_list
+       chr3.interval_list
+       chr4.interval_list
+       chr5.interval_list
+       chr6.interval_list
+       chr7.interval_list
+       chr8.interval_list
+       chr9.interval_list
+       chrXY.interval_list
+      }
+      mutect2.scatter_by_intervals=mutect2.scatter_by_intervals {
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0001_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0002_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0003_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0004_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0005_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0006_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0007_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0008_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0009_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0010_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0011_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0012_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0013_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0014_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0015_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0016_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0017_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0018_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0019_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0020_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0021_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0022_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0023_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0024_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0025_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0026_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0027_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0028_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0029_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0030_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0031_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0032_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0033_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0034_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0035_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0036_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0037_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0038_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0039_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0040_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0041_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0042_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0043_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0044_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0045_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0046_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0047_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0048_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0049_of_50_scattered.interval_list
+       resources_broad_hg38_v0_scattered_calling_intervals_temp_0050_of_50_scattered.interval_list
+      }
+     }
+     input=input {
+      03905962-f1e1-41e8-9059-62f1e1c1e8fc.dna-seq-alignment.json
+      9940db0f-c100-496a-80db-0fc100d96ac1.dna-seq-alignment.json
+      N.extra_info.tsv
+      README.md
+      T.extra_info.tsv
+     }
+     reference=reference {
+      tiny-chr11-exac_common_3.hg38.vcf.gz
+      tiny-chr11-exac_common_3.hg38.vcf.gz.tbi
+      tiny-grch38-chr11-530001-537000.dict
+      tiny-grch38-chr11-530001-537000.fa
+      tiny-grch38-chr11-530001-537000.fa.fai
+      tiny-grch38-chr11-530001-537000.fa.gz
+      tiny-grch38-chr11-530001-537000.fa.gz.alt
+      tiny-grch38-chr11-530001-537000.fa.gz.amb
+      tiny-grch38-chr11-530001-537000.fa.gz.ann
+      tiny-grch38-chr11-530001-537000.fa.gz.bwt
+      tiny-grch38-chr11-530001-537000.fa.gz.fai
+      tiny-grch38-chr11-530001-537000.fa.gz.gzi
+      tiny-grch38-chr11-530001-537000.fa.gz.pac
+      tiny-grch38-chr11-530001-537000.fa.gz.sa
+      tiny-grch38-chr11-530001-537000.fa.img
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         cleanup-workdir
+         1.0.0
+         helper-functions
+         1.0.1
+         payload-add-uniform-ids
+         0.1.1
+         payload-gen-variant-calling
+         0.6.0
+        }
+        nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+         song-score-download
+         2.6.1
+         song-score-upload
+         2.6.1
+        }
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        cleanup-workdir
+        1.0.0
+        helper-functions
+        1.0.1
+        payload-add-uniform-ids
+        0.1.1
+        payload-gen-variant-calling
+        0.6.0
+       }
+       nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+        song-score-download
+        2.6.1
+        song-score-upload
+        2.6.1
+       }
+      }
+     }
+    }
+   }
+   modules=modules {
+    README.md
+    raw.githubusercontent.com=raw.githubusercontent.com {
+     icgc-argo=icgc-argo {
+      data-processing-utility-tools=data-processing-utility-tools {
+       prep-mutect2-qc.0.1.2.0=prep-mutect2-qc.0.1.2.0 {
+        tools=tools {
+         prep-mutect2-qc=prep-mutect2-qc {
+          prep-mutect2-qc.nf
+         }
+        }
+       }
+      }
+      gatk-tools=gatk-tools {
+       gatk-apply-bqsr.4.1.8.0-1.0=gatk-apply-bqsr.4.1.8.0-1.0 {
+        tools=tools {
+         gatk-apply-bqsr=gatk-apply-bqsr {
+          gatk-apply-bqsr.nf
+         }
+        }
+       }
+       gatk-base-recalibrator.4.1.8.0-1.0=gatk-base-recalibrator.4.1.8.0-1.0 {
+        tools=tools {
+         gatk-base-recalibrator=gatk-base-recalibrator {
+          gatk-base-recalibrator.nf
+         }
+        }
+       }
+       gatk-calculate-contamination.4.1.8.0-3.1=gatk-calculate-contamination.4.1.8.0-3.1 {
+        tools=tools {
+         gatk-calculate-contamination=gatk-calculate-contamination {
+          gatk-calculate-contamination.nf
+         }
+        }
+       }
+       gatk-filter-mutect-calls.4.1.8.0-2.2=gatk-filter-mutect-calls.4.1.8.0-2.2 {
+        tools=tools {
+         gatk-filter-mutect-calls=gatk-filter-mutect-calls {
+          gatk-filter-mutect-calls.nf
+         }
+        }
+       }
+       gatk-gather-bam-files.4.1.8.0-1.0=gatk-gather-bam-files.4.1.8.0-1.0 {
+        tools=tools {
+         gatk-gather-bam-files=gatk-gather-bam-files {
+          gatk-gather-bam-files.nf
+         }
+        }
+       }
+       gatk-gather-bqsr-reports.4.1.8.0-1.0=gatk-gather-bqsr-reports.4.1.8.0-1.0 {
+        tools=tools {
+         gatk-gather-bqsr-reports=gatk-gather-bqsr-reports {
+          gatk-gather-bqsr-reports.nf
+         }
+        }
+       }
+       gatk-gather-pileup-summaries.4.1.8.0-3.0=gatk-gather-pileup-summaries.4.1.8.0-3.0 {
+        tools=tools {
+         gatk-gather-pileup-summaries=gatk-gather-pileup-summaries {
+          gatk-gather-pileup-summaries.nf
+         }
+        }
+       }
+       gatk-get-pileup-summaries.4.1.8.0-2.1=gatk-get-pileup-summaries.4.1.8.0-2.1 {
+        tools=tools {
+         gatk-get-pileup-summaries=gatk-get-pileup-summaries {
+          gatk-get-pileup-summaries.nf
+         }
+        }
+       }
+       gatk-learn-read-orientation-model.4.1.8.0-2.0=gatk-learn-read-orientation-model.4.1.8.0-2.0 {
+        tools=tools {
+         gatk-learn-read-orientation-model=gatk-learn-read-orientation-model {
+          gatk-learn-read-orientation-model.nf
+         }
+        }
+       }
+       gatk-merge-mutect-stats.4.1.8.0-2.0=gatk-merge-mutect-stats.4.1.8.0-2.0 {
+        tools=tools {
+         gatk-merge-mutect-stats=gatk-merge-mutect-stats {
+          gatk-merge-mutect-stats.nf
+         }
+        }
+       }
+       gatk-merge-vcfs.4.1.8.0-2.0=gatk-merge-vcfs.4.1.8.0-2.0 {
+        tools=tools {
+         gatk-merge-vcfs=gatk-merge-vcfs {
+          gatk-merge-vcfs.nf
+         }
+        }
+       }
+       gatk-mutect2.4.1.8.0-2.2=gatk-mutect2.4.1.8.0-2.2 {
+        tools=tools {
+         gatk-mutect2=gatk-mutect2 {
+          gatk-mutect2.nf
+         }
+        }
+       }
+       gatk-select-variants.4.1.8.0-1.0=gatk-select-variants.4.1.8.0-1.0 {
+        tools=tools {
+         gatk-select-variants=gatk-select-variants {
+          gatk-select-variants.nf
+         }
+        }
+       }
+       gatk-split-intervals.4.1.4.1-1.0=gatk-split-intervals.4.1.4.1-1.0 {
+        tools=tools {
+         gatk-split-intervals=gatk-split-intervals {
+          gatk-split-intervals.nf
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+   scripts=scripts {
+    cleanup_temp_files.sh
+    install-modules.py
+    prepare_package_release_json.py
+   }
+   tests=tests {
+    conftest.py
+    requirements-test.txt
+    test_workflows.py
+    data=data {
+     0000-inervals.bed
+     0000-scattered.interval_list
+     0001-inervals.bed
+     0001-scattered.interval_list
+     0002-scattered.interval_list
+     SA610149.0.20200122.wgs.grch38.cram
+     SA610149.0.20200122.wgs.grch38.cram.crai
+     my-intervals.bed
+     HCC1143-mini-Mutect2-calls=HCC1143-mini-Mutect2-calls {
+      HCC1143.mutect2.copy.vcf.gz
+      HCC1143.mutect2.copy.vcf.gz.stats
+      HCC1143.mutect2.copy.vcf.gz.tbi
+      HCC1143.mutect2.vcf.gz
+      HCC1143.mutect2.vcf.gz.stats
+      HCC1143.mutect2.vcf.gz.tbi
+     }
+     HCC1143-mini-T=HCC1143-mini-T {
+      8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam
+      8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam.bai
+      HCC1143.f1r2.tar.gz
+      pileups.table
+     }
+     HCC1143_BL-mini-N=HCC1143_BL-mini-N {
+      cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam
+      cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam.bai
+      pileups.table
+     }
+    }
+    reference=reference {
+     tiny-chr11-exac_common_3.hg38.vcf.gz
+     tiny-chr11-exac_common_3.hg38.vcf.gz.tbi
+     tiny-grch38-chr11-530001-537000.dict
+     tiny-grch38-chr11-530001-537000.fa
+     tiny-grch38-chr11-530001-537000.fa.fai
+     tiny-grch38-chr11-530001-537000.fa.gz
+     tiny-grch38-chr11-530001-537000.fa.gz.alt
+     tiny-grch38-chr11-530001-537000.fa.gz.amb
+     tiny-grch38-chr11-530001-537000.fa.gz.ann
+     tiny-grch38-chr11-530001-537000.fa.gz.bwt
+     tiny-grch38-chr11-530001-537000.fa.gz.fai
+     tiny-grch38-chr11-530001-537000.fa.gz.gzi
+     tiny-grch38-chr11-530001-537000.fa.gz.pac
+     tiny-grch38-chr11-530001-537000.fa.gz.sa
+     tiny-grch38-chr11-530001-537000.fa.img
+    }
+   }
+   wfpr_modules=wfpr_modules {
+    README.md
+    github.com=github.com {
+     icgc-argo=icgc-argo {
+      data-processing-utility-tools=data-processing-utility-tools {
+       cleanup-workdir
+       1.0.0
+       helper-functions
+       1.0.1
+       payload-add-uniform-ids
+       0.1.1
+       payload-gen-variant-calling
+       0.6.0
+      }
+      nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+       song-score-download
+       2.6.1
+       song-score-upload
+       2.6.1
+      }
+     }
+    }
+   }
+  }
+  sanger-wgs-variant-calling=sanger-wgs-variant-calling filter="*" {
+   LICENSE
+   LICENSE-short
+   README.md
+   example-params.json
+   main.nf
+   nextflow.config
+   modules=modules {
+    raw.githubusercontent.com=raw.githubusercontent.com {
+     icgc-argo=icgc-argo {
+      data-processing-utility-tools=data-processing-utility-tools {
+       extract-files-from-tarball.0.2.0.0=extract-files-from-tarball.0.2.0.0 {
+        tools=tools {
+         extract-files-from-tarball=extract-files-from-tarball {
+          extract-files-from-tarball.nf
+         }
+        }
+       }
+      }
+      variant-calling-tools=variant-calling-tools {
+       caveman-vcf-fix.0.1.0.0=caveman-vcf-fix.0.1.0.0 {
+        tools=tools {
+         caveman-vcf-fix=caveman-vcf-fix {
+          caveman-vcf-fix.nf
+         }
+        }
+       }
+       generate-bas.0.2.1.0=generate-bas.0.2.1.0 {
+        tools=tools {
+         generate-bas=generate-bas {
+          generate-bas.nf
+         }
+        }
+       }
+       prep-sanger-qc.0.1.3.0=prep-sanger-qc.0.1.3.0 {
+        tools=tools {
+         prep-sanger-qc=prep-sanger-qc {
+          prep-sanger-qc.nf
+         }
+        }
+       }
+       prep-sanger-supplement.0.1.2.0=prep-sanger-supplement.0.1.2.0 {
+        tools=tools {
+         prep-sanger-supplement=prep-sanger-supplement {
+          prep-sanger-supplement.nf
+         }
+        }
+       }
+       repack-sanger-results.0.2.0.0=repack-sanger-results.0.2.0.0 {
+        tools=tools {
+         repack-sanger-results=repack-sanger-results {
+          repack-sanger-results.nf
+         }
+        }
+       }
+       sanger-wgs-variant-caller.2.1.0-9=sanger-wgs-variant-caller.2.1.0-9 {
+        tools=tools {
+         sanger-wgs-variant-caller=sanger-wgs-variant-caller {
+          sanger-wgs-variant-caller.nf
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+   sanger-wgs-variant-calling=sanger-wgs-variant-calling {
+    main.nf
+    nextflow.config
+    pkg.json
+    modules=modules {
+     raw.githubusercontent.com=raw.githubusercontent.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        extract-files-from-tarball.0.2.0.0=extract-files-from-tarball.0.2.0.0 {
+         tools=tools {
+          extract-files-from-tarball=extract-files-from-tarball {
+           extract-files-from-tarball.nf
+          }
+         }
+        }
+       }
+       variant-calling-tools=variant-calling-tools {
+        caveman-vcf-fix.0.1.0.0=caveman-vcf-fix.0.1.0.0 {
+         tools=tools {
+          caveman-vcf-fix=caveman-vcf-fix {
+           caveman-vcf-fix.nf
+          }
+         }
+        }
+        generate-bas.0.2.1.0=generate-bas.0.2.1.0 {
+         tools=tools {
+          generate-bas=generate-bas {
+           generate-bas.nf
+          }
+         }
+        }
+        prep-sanger-qc.0.1.3.0=prep-sanger-qc.0.1.3.0 {
+         tools=tools {
+          prep-sanger-qc=prep-sanger-qc {
+           prep-sanger-qc.nf
+          }
+         }
+        }
+        prep-sanger-supplement.0.1.2.0=prep-sanger-supplement.0.1.2.0 {
+         tools=tools {
+          prep-sanger-supplement=prep-sanger-supplement {
+           prep-sanger-supplement.nf
+          }
+         }
+        }
+        repack-sanger-results.0.2.0.0=repack-sanger-results.0.2.0.0 {
+         tools=tools {
+          repack-sanger-results=repack-sanger-results {
+           repack-sanger-results.nf
+          }
+         }
+        }
+        sanger-wgs-variant-caller.2.1.0-9=sanger-wgs-variant-caller.2.1.0-9 {
+         tools=tools {
+          sanger-wgs-variant-caller=sanger-wgs-variant-caller {
+           sanger-wgs-variant-caller.nf
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    tests=tests {
+     checker.nf
+     local-test-1.json
+     local-test.local-1.json
+     nextflow.config
+     data=data {
+      0000-scattered.interval_list
+      0001-scattered.interval_list
+      0002-scattered.interval_list
+      N.dna_alignment.payload.json
+      N.extra_info.tsv
+      T.dna_alignment.payload.json
+      T.extra_info.tsv
+      my-intervals.bed
+      tiny-chr11-exac_common_3.hg38.vcf.gz
+      tiny-chr11-exac_common_3.hg38.vcf.gz.tbi
+      HCC1143-mini-Mutect2-calls=HCC1143-mini-Mutect2-calls {
+       HCC1143.mutect2.copy.vcf.gz
+       HCC1143.mutect2.copy.vcf.gz.stats
+       HCC1143.mutect2.copy.vcf.gz.tbi
+       HCC1143.mutect2.vcf.gz
+       HCC1143.mutect2.vcf.gz.stats
+       HCC1143.mutect2.vcf.gz.tbi
+      }
+      HCC1143-mini-T=HCC1143-mini-T {
+       8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam
+       8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam.bai
+       HCC1143.f1r2.tar.gz
+       pileups.table
+      }
+      HCC1143_BL-mini-N=HCC1143_BL-mini-N {
+       cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam
+       cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam.bai
+       pileups.table
+      }
+     }
+     reference=reference {
+      tiny-grch38-chr11-530001-537000.dict
+      tiny-grch38-chr11-530001-537000.fa
+      tiny-grch38-chr11-530001-537000.fa.fai
+      tiny-grch38-chr11-530001-537000.fa.gz
+      tiny-grch38-chr11-530001-537000.fa.gz.alt
+      tiny-grch38-chr11-530001-537000.fa.gz.amb
+      tiny-grch38-chr11-530001-537000.fa.gz.ann
+      tiny-grch38-chr11-530001-537000.fa.gz.bwt
+      tiny-grch38-chr11-530001-537000.fa.gz.fai
+      tiny-grch38-chr11-530001-537000.fa.gz.gzi
+      tiny-grch38-chr11-530001-537000.fa.gz.pac
+      tiny-grch38-chr11-530001-537000.fa.gz.sa
+      tiny-grch38-chr11-530001-537000.fa.img
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         cleanup-workdir
+         1.0.0
+         helper-functions
+         1.0.0
+         payload-add-uniform-ids
+         0.1.1
+         payload-gen-variant-calling
+         0.6.0
+        }
+        nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+         song-score-download
+         2.6.1
+         song-score-upload
+         2.6.1
+        }
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        cleanup-workdir
+        1.0.0
+        helper-functions
+        1.0.0
+        payload-add-uniform-ids
+        0.1.1
+        payload-gen-variant-calling
+        0.6.0
+       }
+       nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+        song-score-download
+        2.6.1
+        song-score-upload
+        2.6.1
+       }
+      }
+     }
+    }
+   }
+   scripts=scripts {
+    cleanup_temp_files.sh
+    install-modules.py
+    prepare_package_release_json.py
+   }
+   wfpr_modules=wfpr_modules {
+    README.md
+    github.com=github.com {
+     icgc-argo=icgc-argo {
+      data-processing-utility-tools=data-processing-utility-tools {
+       cleanup-workdir
+       1.0.0
+       helper-functions
+       1.0.0
+       payload-add-uniform-ids
+       0.1.1
+       payload-gen-variant-calling
+       0.6.0
+      }
+      nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+       song-score-download
+       2.6.1
+       song-score-upload
+       2.6.1
+      }
+     }
+    }
+   }
+  }
+ }
+}
+
+

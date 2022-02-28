@@ -1,0 +1,12 @@
+[submodule "modules/argo-qc-tools"]
+	path = modules/argo-qc-tools
+	url = https://github.com/icgc-argo-workflows/argo-qc-tools.git
+[submodule "modules/dna-seq-processing-wfs"]
+	path = modules/dna-seq-processing-wfs
+	url = https://github.com/icgc-argo-workflows/dna-seq-processing-wfs.git
+[submodule "modules/gatk-mutect2-variant-calling"]
+	path = modules/gatk-mutect2-variant-calling
+	url = https://github.com/icgc-argo-workflows/gatk-mutect2-variant-calling.git
+[submodule "modules/sanger-wgs-variant-calling"]
+	path = modules/sanger-wgs-variant-calling
+	url = https://github.com/icgc-argo-workflows/sanger-wgs-variant-calling.git
