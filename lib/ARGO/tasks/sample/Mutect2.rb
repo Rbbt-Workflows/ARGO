@@ -31,8 +31,8 @@ module Sample
     bam = dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM" }.first
     bam_normal = dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM_normal" }.first
 
-    options[:tumour_aln_cram] = bam.file(File.join('index', File.basename(bam.dependencies.first.path)))
-    options[:normal_aln_cram] = bam_normal.file(File.join('index', File.basename(bam_normal.dependencies.first.path)))
+    options[:tumour_aln_cram] = bam.file('index')[bam.name + '.*am']
+    options[:normal_aln_cram] = bam_normal.file('index')[bam_normal.name + '.*am']
 
     options[:tumour_extra_info] = metadata.file('tumor_extra.tsv')
     options[:normal_extra_info] = metadata.file('normal_extra.tsv')

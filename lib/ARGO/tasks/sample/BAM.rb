@@ -33,6 +33,10 @@ module Sample
 
   dep_task :ARGO_BAM_normal, Sample, :ARGO_BAM, :sample_type => "Normal"
 
+
+
+
+
   input :use_rbbt_aligner, :boolean, "Use rbbt aligner instead of ARGO", false
   dep :ARGO_BAM do |sample,options,dependencies|
     if options[:use_rbbt_aligner]
@@ -47,11 +51,15 @@ module Sample
     raise "File does not exist" unless File.exists?(bam)
     output = file('index')
     Samtools.prepare_BAM bam, output
-    output.glob("*").each do |file|
-      basename, _sep, extension = File.basename(file).partition(".")
-      fixed_name = output[[self.name, extension] * "."]
-      Misc.in_dir output do
-        `ln -s #{File.basename(file)} #{fixed_name}`
+
+    extension = File.basename(bam).split(".").last.downcase
+    Misc.in_dir output do
+      if extension == 'bam'
+        `ln -s #{File.basename(bam)} #{self.name}.bam`
+        `ln -s #{File.basename(bam)}.bai #{self.name}.bam.bai`
+      else
+        `ln -s #{File.basename(bam)} #{self.name}.cram`
+        `ln -s #{File.basename(bam)}.crai #{self.name}.cram.crai`
       end
     end
     File.basename(self.path)
@@ -71,14 +79,65 @@ module Sample
     raise "File does not exist" unless File.exists?(bam)
     output = file('index')
     Samtools.prepare_BAM bam, output
-    output.glob("*").each do |file|
-      basename, _sep, extension = File.basename(file).partition(".")
-      fixed_name = output[[self.name, extension] * "."]
-      Misc.in_dir output do
-        `ln -s #{File.basename(file)} #{fixed_name}`
+    extension = File.basename(bam).split(".").last.downcase
+    Misc.in_dir output do
+      if extension == 'bam'
+        `ln -s #{File.basename(bam)} #{self.name}.bam`
+        `ln -s #{File.basename(bam)}.bai #{self.name}.bam.bai`
+      else
+        `ln -s #{File.basename(bam)} #{self.name}.cram`
+        `ln -s #{File.basename(bam)}.crai #{self.name}.cram.crai`
       end
     end
     File.basename(self.path)
   end
+
+  #input :use_rbbt_aligner, :boolean, "Use rbbt aligner instead of ARGO", false
+  #dep :ARGO_BAM do |sample,options,dependencies|
+  #  if options[:use_rbbt_aligner]
+  #    {:task => :BAM, :jobname => sample}
+  #  else
+  #    {:inputs => options, :jobname => sample}
+  #  end
+  #end
+  #task :indexed_BAM => :string do
+  #  bam = dependencies.first
+  #  bam = bam.path if Step === bam
+  #  raise "File does not exist" unless File.exists?(bam)
+  #  output = file('index')
+  #  Samtools.prepare_BAM bam, output
+  #  output.glob("*").each do |file|
+  #    basename, _sep, extension = File.basename(file).partition(".")
+  #    fixed_name = output[[self.name, extension] * "."]
+  #    Misc.in_dir output do
+  #      `ln -s #{File.basename(file)} #{fixed_name}`
+  #    end
+  #  end
+  #  File.basename(self.path)
+  #end
+
+  #input :use_rbbt_aligner, :boolean, "Use rbbt aligner instead of ARGO", false
+  #dep :ARGO_BAM_normal do |sample,options,dependencies|
+  #  if options[:use_rbbt_aligner]
+  #    {:task => :BAM_normal, :jobname => sample}
+  #  else
+  #    {:inputs => options, :jobname => sample}
+  #  end
+  #end
+  #task :indexed_BAM_normal => :string do
+  #  bam = dependencies.first
+  #  bam = bam.path if Step === bam
+  #  raise "File does not exist" unless File.exists?(bam)
+  #  output = file('index')
+  #  Samtools.prepare_BAM bam, output
+  #  output.glob("*").each do |file|
+  #    basename, _sep, extension = File.basename(file).partition(".")
+  #    fixed_name = output[[self.name, extension] * "."]
+  #    Misc.in_dir output do
+  #      `ln -s #{File.basename(file)} #{fixed_name}`
+  #    end
+  #  end
+  #  File.basename(self.path)
+  #end
 
 end
