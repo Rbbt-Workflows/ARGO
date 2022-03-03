@@ -3,7 +3,7 @@ module Sample
   input :sample_type, :select, "Sample type (Tumor or Normal) to align", "Tumor", :select_options => %w(Tumor Normal)
   input :reference, :select, "Reference code", nil, :select_options => %w(b37 hg38 mm10), :nofile => true
   dep :ARGO_metadata
-  dep_task :ARGO_BAM, ARGO, "dna-seq-alignment", :analysis_metadata => :placeholder do |sample,options,dependencies|
+  dep_task :ARGO_BAM, ARGO, "dna-seq-alignment", :sample_type => "Tumor", :analysis_metadata => :placeholder do |sample,options,dependencies|
     options = Sample.add_sample_options sample, options
     sample_type = options[:sample_type]
 
@@ -32,8 +32,6 @@ module Sample
   end
 
   dep_task :ARGO_BAM_normal, Sample, :ARGO_BAM, :sample_type => "Normal"
-
-
 
 
 

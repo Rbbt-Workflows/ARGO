@@ -83,8 +83,6 @@ module Sample
     options["ref_genome_fa"] = options["ref_genome_fa"].sub(/\.gz$/,'')
     options["ref_genome_fa"] = options["ref_genome_fa"].sub(/\.gz$/,'')
 
-    
-    tar_gz = Rbbt.var.Sanger.tarized_genomes["hg38.tar.gz"].find
 
     options["ref_genome_tar-sangerWgsVariantCaller"] = Rbbt.share.databases.Sanger["core_ref_GRCh38_hla_decoy_ebv.tar.gz"].produce.find
     options["ref_snv_indel_tar-sangerWgsVariantCaller"] = Rbbt.share.databases.Sanger["SNV_INDEL_ref_GRCh38_hla_decoy_ebv-fragment.tar.gz"].produce.find
@@ -92,27 +90,21 @@ module Sample
     options["ref_cnv_sv_tar-sangerWgsVariantCaller"] = Rbbt.share.databases.Sanger["CNV_SV_ref_GRCh38_hla_decoy_ebv_brass6+.tar.gz"].produce.find
     options["qcset_tar-sangerWgsVariantCaller"] = Rbbt.share.databases.Sanger["qcGenotype_GRCh38_hla_decoy_ebv.tar.gz"].produce.find
 
-    if ! File.exists? tar_gz
-      Open.mkdir File.dirname(tar_gz)
-      Misc.in_dir File.dirname(options["ref_genome_fa"]) do
-        CMD.cmd_log("tar cvfz #{tar_gz} .")
-      end
-    end
+    options["ref_genome_tar-sangerWxsVariantCaller"] = Rbbt.share.databases.Sanger["core_ref_GRCh38_hla_decoy_ebv.tar.gz"].produce.find
+    options["ref_snv_indel_tar-sangerWxsVariantCaller"] = Rbbt.share.databases.Sanger["SNV_INDEL_ref_GRCh38_hla_decoy_ebv-fragment.tar.gz"].produce.find
+    options["vagrent_annot-sangerWxsVariantCaller"] = Rbbt.share.databases.Sanger["VAGrENT_ref_GRCh38_hla_decoy_ebv_ensembl_91.tar.gz"].produce.find
+    options["ref_cnv_sv_tar-sangerWxsVariantCaller"] = Rbbt.share.databases.Sanger["CNV_SV_ref_GRCh38_hla_decoy_ebv_brass6+.tar.gz"].produce.find
+    options["qcset_tar-sangerWxsVariantCaller"] = Rbbt.share.databases.Sanger["qcGenotype_GRCh38_hla_decoy_ebv.tar.gz"].produce.find
 
-    options["reference-generateBas"] = options["ref_genome_fa"]
+    #tar_gz = Rbbt.var.Sanger.tarized_genomes["hg38.tar.gz"].find
+    #if ! File.exists? tar_gz
+    #  Open.mkdir File.dirname(tar_gz)
+    #  Misc.in_dir File.dirname(options["ref_genome_fa"]) do
+    #    CMD.cmd_log("tar cvfz #{tar_gz} .")
+    #  end
+    #end
 
-    germline_resource ||= options[:germline_resource_vcfs] || :gnomad
-    germline_resource = HTS.helpers[:vcf_file].call( reference, germline_resource) if germline_resource and ! File.exists?(germline_resource.to_s)
-    options[:germline_resource_vcfs] = GATK.prepare_VCF germline_resource if germline_resource
-
-    pileup_germline_resource = options[:contamination_variants] || :small_exac
-    pileup_germline_resource = HTS.helpers[:vcf_file].call(reference, pileup_germline_resource) if pileup_germline_resource and ! File.exists?(pileup_germline_resource.to_s)
-    options[:contamination_variants] = GATK.prepare_VCF pileup_germline_resource
-
-    basedir = Rbbt.modules["sanger-wgs-variant-calling"].find(:lib)
-    #options["mutect2_scatter_interval_files"] ||= File.join(basedir, "/assets/mutect2.scatter_by_chr/chr*.interval_list")
-
-    #options[:perform_bqsr] = "false" if options[:perform_bqsr].nil?
+    options["ref_genome_fa-generateBas"] = options["ref_genome_fa"]
 
     {:inputs => options}
   end

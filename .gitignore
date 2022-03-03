@@ -1,2 +1,3 @@
 .crap
 .nextflow
+nextflow.singularity.config
