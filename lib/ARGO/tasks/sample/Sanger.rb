@@ -18,6 +18,7 @@ qcGenotype_GRCh38_hla_decoy_ebv.tar.gz
 end
 
 module Sample
+
   dep :ARGO_metadata
   dep :indexed_BAM do |sample,options,dependencies|
     options = Sample.add_sample_options sample, options
@@ -44,6 +45,7 @@ module Sample
     end
     {:inputs => options, :jobname => sample}
   end
+  input :type_of_sequencing, :select, "Whole genome or whole exome", nil, :select_options => %w(WGS WES panel)
   dep_task :ARGO_sanger, ARGO, "sanger-wgs-variant-calling", :tumour_aln_cram => :indexed_BAM, :normal_aln_cram => :indexed_BAM_normal do |sample,options,dependencies|
     options = Sample.add_sample_options sample, options
 
@@ -98,18 +100,16 @@ module Sample
     options["vagrent_annot-sangerWxsVariantCaller"] = Rbbt.share.databases.Sanger["VAGrENT_ref_GRCh38_hla_decoy_ebv_ensembl_91.tar.gz"].produce.find
     options["ref_cnv_sv_tar-sangerWxsVariantCaller"] = Rbbt.share.databases.Sanger["CNV_SV_ref_GRCh38_hla_decoy_ebv_brass6+.tar.gz"].produce.find
     options["qcset_tar-sangerWxsVariantCaller"] = Rbbt.share.databases.Sanger["qcGenotype_GRCh38_hla_decoy_ebv.tar.gz"].produce.find
-
-    #tar_gz = Rbbt.var.Sanger.tarized_genomes["hg38.tar.gz"].find
-    #if ! File.exists? tar_gz
-    #  Open.mkdir File.dirname(tar_gz)
-    #  Misc.in_dir File.dirname(options["ref_genome_fa"]) do
-    #    CMD.cmd_log("tar cvfz #{tar_gz} .")
-    #  end
-    #end
-
     options["ref_genome_fa-generateBas"] = options["ref_genome_fa"]
 
-    {:inputs => options}
+    type_of_sequencing = options[:type_of_sequencing] || "WGS"
+
+    case type_of_sequencing.to_s.upcase
+    when "WGS"
+      {:inputs => options}
+    else
+      {:task =>  "sanger-wxs-variant-calling", :inputs => options}
+    end
   end
 
 end

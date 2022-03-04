@@ -4012,7 +4012,264 @@ ARGO=/$PWD filter="*" {
     }
    }
   }
+  sanger-wxs-variant-calling=sanger-wxs-variant-calling {
+   LICENSE
+   LICENSE-short
+   README.md
+   example-params.json
+   main.nf
+   nextflow.config
+   modules=modules {
+    raw.githubusercontent.com=raw.githubusercontent.com {
+     icgc-argo=icgc-argo {
+      data-processing-utility-tools=data-processing-utility-tools {
+       extract-files-from-tarball.0.2.0.0=extract-files-from-tarball.0.2.0.0 {
+        tools=tools {
+         extract-files-from-tarball=extract-files-from-tarball {
+          extract-files-from-tarball.nf
+         }
+        }
+       }
+      }
+      variant-calling-tools=variant-calling-tools {
+       caveman-vcf-fix.0.1.0.0=caveman-vcf-fix.0.1.0.0 {
+        tools=tools {
+         caveman-vcf-fix=caveman-vcf-fix {
+          caveman-vcf-fix.nf
+         }
+        }
+       }
+       generate-bas.0.2.1.0=generate-bas.0.2.1.0 {
+        tools=tools {
+         generate-bas=generate-bas {
+          generate-bas.nf
+         }
+        }
+       }
+       prep-sanger-qc.0.1.3.0=prep-sanger-qc.0.1.3.0 {
+        tools=tools {
+         prep-sanger-qc=prep-sanger-qc {
+          prep-sanger-qc.nf
+         }
+        }
+       }
+       prep-sanger-supplement.0.1.2.0=prep-sanger-supplement.0.1.2.0 {
+        tools=tools {
+         prep-sanger-supplement=prep-sanger-supplement {
+          prep-sanger-supplement.nf
+         }
+        }
+       }
+       repack-sanger-results.0.2.0.0=repack-sanger-results.0.2.0.0 {
+        tools=tools {
+         repack-sanger-results=repack-sanger-results {
+          repack-sanger-results.nf
+         }
+        }
+       }
+       sanger-wxs-variant-caller.3.1.6-3=sanger-wxs-variant-caller.3.1.6-3 {
+        tools=tools {
+         sanger-wxs-variant-caller=sanger-wxs-variant-caller {
+          sanger-wxs-variant-caller.nf
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+   sanger-wxs-variant-calling=sanger-wxs-variant-calling {
+    main.nf
+    nextflow.config
+    pkg.json
+    modules=modules {
+     raw.githubusercontent.com=raw.githubusercontent.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        extract-files-from-tarball.0.2.0.0=extract-files-from-tarball.0.2.0.0 {
+         tools=tools {
+          extract-files-from-tarball=extract-files-from-tarball {
+           extract-files-from-tarball.nf
+          }
+         }
+        }
+       }
+       variant-calling-tools=variant-calling-tools {
+        caveman-vcf-fix.0.1.0.0=caveman-vcf-fix.0.1.0.0 {
+         tools=tools {
+          caveman-vcf-fix=caveman-vcf-fix {
+           caveman-vcf-fix.nf
+          }
+         }
+        }
+        generate-bas.0.2.1.0=generate-bas.0.2.1.0 {
+         tools=tools {
+          generate-bas=generate-bas {
+           generate-bas.nf
+          }
+         }
+        }
+        prep-sanger-qc.0.1.3.0=prep-sanger-qc.0.1.3.0 {
+         tools=tools {
+          prep-sanger-qc=prep-sanger-qc {
+           prep-sanger-qc.nf
+          }
+         }
+        }
+        prep-sanger-supplement.0.1.2.0=prep-sanger-supplement.0.1.2.0 {
+         tools=tools {
+          prep-sanger-supplement=prep-sanger-supplement {
+           prep-sanger-supplement.nf
+          }
+         }
+        }
+        repack-sanger-results.0.2.0.0=repack-sanger-results.0.2.0.0 {
+         tools=tools {
+          repack-sanger-results=repack-sanger-results {
+           repack-sanger-results.nf
+          }
+         }
+        }
+        sanger-wxs-variant-caller.3.1.6-3=sanger-wxs-variant-caller.3.1.6-3 {
+         tools=tools {
+          sanger-wxs-variant-caller=sanger-wxs-variant-caller {
+           sanger-wxs-variant-caller.nf
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    tests=tests {
+     checker.nf
+     local-test-1.nf.json
+     local-test-qa.nf.json
+     local-test.local-1.nf.json
+     local-test.local-2.nf.json
+     nextflow.config
+     data=data {
+      0000-scattered.interval_list
+      0001-scattered.interval_list
+      0002-scattered.interval_list
+      N.dna_alignment.payload.json
+      N.extra_info.tsv
+      T.dna_alignment.payload.json
+      T.extra_info.tsv
+      my-intervals.bed
+      tiny-chr11-exac_common_3.hg38.vcf.gz
+      tiny-chr11-exac_common_3.hg38.vcf.gz.tbi
+      HCC1143-mini-Mutect2-calls=HCC1143-mini-Mutect2-calls {
+       HCC1143.mutect2.copy.vcf.gz
+       HCC1143.mutect2.copy.vcf.gz.stats
+       HCC1143.mutect2.copy.vcf.gz.tbi
+       HCC1143.mutect2.vcf.gz
+       HCC1143.mutect2.vcf.gz.stats
+       HCC1143.mutect2.vcf.gz.tbi
+      }
+      HCC1143-mini-T=HCC1143-mini-T {
+       8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam
+       8f879c15-14da-593d-bb76-db866f81ab3a.6.20190927.wgs.grch38.bam.bai
+       HCC1143.f1r2.tar.gz
+       pileups.table
+      }
+      HCC1143_BL-mini-N=HCC1143_BL-mini-N {
+       cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam
+       cfa409d0-3236-5f07-8634-a2c0de74c8f2.5.20190927.wgs.grch38.bam.bai
+       pileups.table
+      }
+     }
+     reference=reference {
+      tiny-grch38-chr11-530001-537000.dict
+      tiny-grch38-chr11-530001-537000.fa
+      tiny-grch38-chr11-530001-537000.fa.fai
+      tiny-grch38-chr11-530001-537000.fa.gz
+      tiny-grch38-chr11-530001-537000.fa.gz.alt
+      tiny-grch38-chr11-530001-537000.fa.gz.amb
+      tiny-grch38-chr11-530001-537000.fa.gz.ann
+      tiny-grch38-chr11-530001-537000.fa.gz.bwt
+      tiny-grch38-chr11-530001-537000.fa.gz.fai
+      tiny-grch38-chr11-530001-537000.fa.gz.gzi
+      tiny-grch38-chr11-530001-537000.fa.gz.pac
+      tiny-grch38-chr11-530001-537000.fa.gz.sa
+      tiny-grch38-chr11-530001-537000.fa.img
+     }
+     wfpr_modules=wfpr_modules {
+      README.md
+      github.com=github.com {
+       icgc-argo=icgc-argo {
+        data-processing-utility-tools=data-processing-utility-tools {
+         cleanup-workdir
+         1.0.0
+         helper-functions
+         1.0.0
+         payload-add-uniform-ids
+         0.1.1
+         payload-gen-variant-calling
+         0.6.0
+        }
+        nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+         song-score-download
+         2.6.1
+         song-score-upload
+         2.6.1
+        }
+       }
+      }
+     }
+    }
+    wfpr_modules=wfpr_modules {
+     README.md
+     github.com=github.com {
+      icgc-argo=icgc-argo {
+       data-processing-utility-tools=data-processing-utility-tools {
+        cleanup-workdir
+        1.0.0
+        helper-functions
+        1.0.0
+        payload-add-uniform-ids
+        0.1.1
+        payload-gen-variant-calling
+        0.6.0
+       }
+       nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+        song-score-download
+        2.6.1
+        song-score-upload
+        2.6.1
+       }
+      }
+     }
+    }
+   }
+   scripts=scripts {
+    cleanup_temp_files.sh
+    install-modules.py
+    prepare_package_release_json.py
+   }
+   wfpr_modules=wfpr_modules {
+    README.md
+    github.com=github.com {
+     icgc-argo=icgc-argo {
+      data-processing-utility-tools=data-processing-utility-tools {
+       cleanup-workdir
+       1.0.0
+       helper-functions
+       1.0.0
+       payload-add-uniform-ids
+       0.1.1
+       payload-gen-variant-calling
+       0.6.0
+      }
+      nextflow-data-processing-utility-tools=nextflow-data-processing-utility-tools {
+       song-score-download
+       2.6.1
+       song-score-upload
+       2.6.1
+      }
+     }
+    }
+   }
+  }
  }
 }
-
-

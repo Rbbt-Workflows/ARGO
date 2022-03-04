@@ -10,3 +10,6 @@
 [submodule "modules/sanger-wgs-variant-calling"]
 	path = modules/sanger-wgs-variant-calling
 	url = https://github.com/icgc-argo-workflows/sanger-wgs-variant-calling.git
+[submodule "modules/sanger-wxs-variant-calling"]
+	path = modules/sanger-wxs-variant-calling
+	url = https://github.com/icgc-argo-workflows/sanger-wxs-variant-calling.git
