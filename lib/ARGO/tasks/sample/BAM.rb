@@ -36,6 +36,7 @@ module Sample
 
 
   input :use_rbbt_aligner, :boolean, "Use rbbt aligner instead of ARGO", false
+  input :reference, :select, "Reference code", nil, :select_options => %w(b37 hg38 mm10), :nofile => true
   dep :ARGO_BAM do |sample,options,dependencies|
     if options[:use_rbbt_aligner]
       {:task => :BAM, :jobname => sample}
@@ -43,28 +44,29 @@ module Sample
       {:inputs => options, :jobname => sample}
     end
   end
-  task :indexed_BAM => :string do
+  task :indexed_BAM => :string do |use_rbbt_aligner,reference|
     bam = dependencies.first
     bam = bam.path if Step === bam
     raise "File does not exist" unless File.exists?(bam)
     output = file('index')
-    Samtools.prepare_BAM bam, output
+    file = Samtools.prepare_BAM bam, output
 
     extension = output.glob("*.crai").any? ? 'cram' : 'bam'
-    Misc.in_dir output do
-      if extension == 'bam'
-        `ln -s #{File.basename(bam)} #{self.name}.bam`
-        `ln -s #{File.basename(bam)}.bai #{self.name}.bam.bai`
-        `ln -s #{File.basename(bam)} #{self.name}.cram`
-        `ln -s #{File.basename(bam)}.crai #{self.name}.cram.bai`
-      else
-        `ln -s #{File.basename(bam)} #{self.name}.bam`
-        `ln -s #{File.basename(bam)}.bai #{self.name}.bam.crai`
-        `ln -s #{File.basename(bam)} #{self.name}.cram`
-        `ln -s #{File.basename(bam)}.crai #{self.name}.cram.crai`
-      end
+
+    if extension == 'bam'
+      cram = file.sub(/\.bam$/i,'') + '.cram'
+      reference = HTS.helpers[:reference_file].call reference unless File.exists?(reference)
+      reference = GATK.prepare_FASTA reference
+      Samtools.to_cram(file, reference, cram)
+      file = Samtools.prepare_BAM cram, output
     end
-    Open.link(output[File.basename(bam)], self.path)
+
+    Misc.in_dir output do
+      `ln -s #{File.basename(file)} #{self.name}.cram`
+      `ln -s #{File.basename(file)}.crai #{self.name}.cram.crai`
+    end
+
+    Open.link(output[File.basename(bam)], self.tmp_path)
     nil
   end
 

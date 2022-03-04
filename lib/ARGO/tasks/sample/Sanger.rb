@@ -51,12 +51,15 @@ module Sample
     options[:tumour_aln_metadata] = metadata.file('tumor.json')
     options[:normal_aln_metadata] = metadata.file('normal.json')
 
+    bam_normal = dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM_normal" }.first.step(:indexed_BAM)
+    bam = [dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM" } - [bam_normal]].flatten.first
 
-    bam = dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM" }.first
-    bam_normal = dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM_normal" }.first
+    # Always use .bam as extension, even if it's a CRAM file. It's just simpler
+    # and it seems to work
+    extension = '.cram'
 
-    options[:tumour_aln_cram] = bam.file('index')[bam.name + '.*am']
-    options[:normal_aln_cram] = bam_normal.file('index')[bam_normal.name + '.*am']
+    options[:tumour_aln_cram] = bam.file('index')[bam.name + extension]
+    options[:normal_aln_cram] = bam_normal.file('index')[bam_normal.name + extension]
 
     options[:tumour_extra_info] = metadata.file('tumor_extra.tsv')
     options[:normal_extra_info] = metadata.file('normal_extra.tsv')

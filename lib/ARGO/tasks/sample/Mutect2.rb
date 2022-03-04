@@ -33,7 +33,7 @@ module Sample
 
     # Always use .bam as extension, even if it's a CRAM file. It's just simpler
     # and it seems to work
-    extension = '.bam'
+    extension = '.cram'
 
     options[:tumour_aln_cram] = bam.file('index')[bam.name + extension]
     options[:normal_aln_cram] = bam_normal.file('index')[bam_normal.name + extension]
