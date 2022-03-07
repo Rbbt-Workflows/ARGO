@@ -1,3 +1,18 @@
+module ARGO
+  module Mutect2
+
+    DATA_URLS=<<-EOF.split("\n")
+somatic-hg38/1000g_pon.hg38.vcf.gz
+    EOF
+
+    DATA_URLS.each do |file|
+      url = File.join("https://storage.cloud.google.com/gatk-best-practices/", file)
+      Rbbt.claim Rbbt.share.databases.ARGO_mutect[file], :url, url
+    end
+    
+  end
+end
+
 module Sample
 
   dep :ARGO_metadata
@@ -47,27 +62,52 @@ module Sample
     options["ref_fa"] = ARGO.link_FASTA(BWA.prepare_FASTA(HTS.helpers[:reference_file].call(reference)))
     options["ref_fa"] = options["ref_fa"].sub(/\.gz$/,'')
 
+    basedir = Rbbt.modules["gatk-mutect2-variant-calling"].find(:lib)
+
+    options[:panel_of_normals] = nil if options[:panel_of_normals] == 'none' || options[:panel_of_normals] == 'default'
+
+    panel_of_normals = options[:panel_of_normals] ||= begin
+                                                        pon = File.join(File.dirname(reference), 'known_sites/panel_of_normals.vcf.gz')
+                                                        File.exists?(pon) ? pon : nil
+                                                      end
+
     panel_of_normals = options[:panel_of_normals] ||= case reference.to_s
-          when 'b37'
-            Organism["Hsa"].b37.known_sites["panel_of_normals.vcf"].produce.find
-          when 'hg38'
-            Organism["Hsa"].hg38.known_sites["panel_of_normals.vcf"].produce.find
-          else
-            raise "No default or Broad panel of normals for reference '#{reference}'"
-          end
+                                                      when 'b37'
+                                                        Organism["Hsa"].b37.known_sites["panel_of_normals.vcf"].produce.find
+                                                      when 'hg38'
+                                                        Organism["Hsa"].hg38.known_sites["panel_of_normals.vcf"].produce.find
+                                                      else
+                                                        raise "No default or Broad panel of normals for reference '#{reference}'"
+                                                      end
 
-    panel_of_normals = nil if panel_of_normals == 'none'
-    options[:panel_of_normals] = GATK.prepare_VCF panel_of_normals if panel_of_normals
+    if panel_of_normals
+      options[:panel_of_normals] = GATK.prepare_VCF panel_of_normals if panel_of_normals
+    else
+      options[:panel_of_normals] = "NO_FILE"
+    end
 
-    germline_resource ||= options[:germline_resource_vcfs] || :gnomad
-    germline_resource = HTS.helpers[:vcf_file].call( reference, germline_resource) if germline_resource and ! File.exists?(germline_resource.to_s)
+    germline_resource = options[:germline_resource_vcfs]
+
+    germline_resource = options[:germline_resource_vcfs] ||= begin
+                                                               gr = File.join(File.dirname(reference), 'known_sites/af-only-gnomad.vcf.gz')
+                                                               File.exists?(gr) ? gr : nil
+                                                             end
+
+    germline_resource = options[:germline_resource_vcfs] ||= begin
+                                                               HTS.helpers[:vcf_file].call(reference, :gnomad) if germline_resource and ! File.exists?(germline_resource.to_s)
+                                                            end
+
     options[:germline_resource_vcfs] = GATK.prepare_VCF germline_resource if germline_resource
 
     pileup_germline_resource = options[:contamination_variants] || :small_exac
     pileup_germline_resource = HTS.helpers[:vcf_file].call(reference, pileup_germline_resource) if pileup_germline_resource and ! File.exists?(pileup_germline_resource.to_s)
     options[:contamination_variants] = GATK.prepare_VCF pileup_germline_resource
 
-    basedir = Rbbt.modules["gatk-mutect2-variant-calling"].find(:lib)
+    options["mutect2_scatter_interval_files"] ||= begin
+                                                    il = reference + '.interval_lists'
+                                                    File.directory?(il) ? il + '/*' : nil
+                                                  end
+
     options["mutect2_scatter_interval_files"] ||= File.join(basedir, "/assets/mutect2.scatter_by_chr/chr*.interval_list")
 
     options[:perform_bqsr] = "false" if options[:perform_bqsr].nil?

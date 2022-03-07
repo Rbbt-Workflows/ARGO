@@ -38,8 +38,11 @@ module Sample
   input :use_rbbt_aligner, :boolean, "Use rbbt aligner instead of ARGO", false
   input :reference, :select, "Reference code", nil, :select_options => %w(b37 hg38 mm10), :nofile => true
   dep :ARGO_BAM do |sample,options,dependencies|
+    sample_files = Sample.sample_files sample
+    options = IndiferentHash.setup(options.merge(:use_rbbt_aligner => true)) if sample_files["uBAM"] && sample_files["uBAM"].any?
+    options.delete(:type_of_sequencing) unless options[:type_of_sequencing].to_s == "panel"
     if options[:use_rbbt_aligner]
-      {:task => :BAM, :jobname => sample}
+      {:task => :BAM, :inputs => options, :jobname => sample}
     else
       {:inputs => options, :jobname => sample}
     end
@@ -70,10 +73,12 @@ module Sample
     nil
   end
 
-  input :use_rbbt_aligner, :boolean, "Use rbbt aligner instead of ARGO", false
   dep :ARGO_BAM_normal do |sample,options|
+    sample_files = Sample.sample_files sample
+    options = IndiferentHash.setup(options.merge(:use_rbbt_aligner => true)) if sample_files["uBAM"] && sample_files["uBAM"].any?
+    options.delete(:type_of_sequencing) unless options[:type_of_sequencing].to_s == "panel"
     if options[:use_rbbt_aligner]
-      {:task => :BAM_normal, :jobname => sample}
+      {:task => :BAM_normal, :inputs => options, :jobname => sample}
     else
       {:inputs => options, :jobname => sample}
     end
