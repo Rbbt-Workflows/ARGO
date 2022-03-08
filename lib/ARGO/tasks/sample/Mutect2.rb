@@ -17,7 +17,7 @@ module Sample
 
   dep :ARGO_metadata
   dep :indexed_BAM do |sample,options,dependencies|
-    options = Sample.add_sample_options sample, options
+    options = Sample.add_sample_options sample, options.dup
     sample_files = Sample.sample_files sample
     if sample_files && sample_files.include?("CRAM")
       options["Sample#ARGO_BAM"] = sample_files["CRAM"].first
@@ -26,7 +26,7 @@ module Sample
     {:inputs => options, :jobname => sample}
   end
   dep :indexed_BAM_normal do |sample,options,dependencies|
-    options = Sample.add_sample_options sample, options
+    options = Sample.add_sample_options sample, options.dup
     normal_sample = Sample.matched_normal sample, Sample.sample_study(sample)
     sample_files = Sample.sample_files normal_sample
     if sample_files && sample_files.include?("CRAM")
@@ -94,8 +94,8 @@ module Sample
                                                              end
 
     germline_resource = options[:germline_resource_vcfs] ||= begin
-                                                               HTS.helpers[:vcf_file].call(reference, :gnomad) if germline_resource and ! File.exists?(germline_resource.to_s)
-                                                            end
+                                                               HTS.helpers[:vcf_file].call(reference, :gnomad) 
+                                                             end
 
     options[:germline_resource_vcfs] = GATK.prepare_VCF germline_resource if germline_resource
 

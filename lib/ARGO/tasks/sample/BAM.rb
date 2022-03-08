@@ -3,7 +3,7 @@ module Sample
   input :sample_type, :select, "Sample type (Tumor or Normal) to align", "Tumor", :select_options => %w(Tumor Normal)
   input :reference, :select, "Reference code", nil, :select_options => %w(b37 hg38 mm10), :nofile => true
   dep :ARGO_metadata
-  dep_task :ARGO_BAM, ARGO, "dna-seq-alignment", :sample_type => "Tumor", :analysis_metadata => :placeholder do |sample,options,dependencies|
+  dep_task :ARGO_BAM, ARGO, "dna-seq-alignment", :analysis_metadata => :placeholder do |sample,options,dependencies|
     options = Sample.add_sample_options sample, options
     sample_type = options[:sample_type]
 
@@ -37,7 +37,7 @@ module Sample
 
   input :use_rbbt_aligner, :boolean, "Use rbbt aligner instead of ARGO", false
   input :reference, :select, "Reference code", nil, :select_options => %w(b37 hg38 mm10), :nofile => true
-  dep :ARGO_BAM do |sample,options,dependencies|
+  dep :ARGO_BAM, :sample_type => "Tumor" do |sample,options,dependencies|
     sample_files = Sample.sample_files sample
     options = IndiferentHash.setup(options.merge(:use_rbbt_aligner => true)) if sample_files["uBAM"] && sample_files["uBAM"].any?
     options.delete(:type_of_sequencing) unless options[:type_of_sequencing].to_s == "panel"
