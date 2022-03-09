@@ -1,7 +1,7 @@
 module Sample
 
   input :sample_type, :select, "Sample type (Tumor or Normal) to align", "Tumor", :select_options => %w(Tumor Normal)
-  input :reference, :select, "Reference code", nil, :select_options => %w(b37 hg38 mm10), :nofile => true
+  input :reference, :string, "Reference code or file", 'hg38'
   dep :ARGO_metadata
   dep_task :ARGO_BAM, ARGO, "dna-seq-alignment", :analysis_metadata => :placeholder do |sample,options,dependencies|
     options = Sample.add_sample_options sample, options
@@ -36,12 +36,17 @@ module Sample
 
 
   input :use_rbbt_aligner, :boolean, "Use rbbt aligner instead of ARGO", false
-  input :reference, :select, "Reference code", nil, :select_options => %w(b37 hg38 mm10), :nofile => true
+  input :reference, :string, "Reference code or file", 'hg38'
   dep :ARGO_BAM, :sample_type => "Tumor" do |sample,options,dependencies|
     sample_files = Sample.sample_files sample
     options = IndiferentHash.setup(options.merge(:use_rbbt_aligner => true)) if sample_files["uBAM"] && sample_files["uBAM"].any?
     options.delete(:type_of_sequencing) unless options[:type_of_sequencing].to_s == "panel"
     if options[:use_rbbt_aligner]
+      sample_options = IndiferentHash.setup(Sample.study_options(sample).merge(Sample.sample_options(sample)))
+      sample_options.each do |key,value|
+        options.delete key if options[key] == value
+      end
+
       {:task => :BAM, :inputs => options, :jobname => sample}
     else
       {:inputs => options, :jobname => sample}
@@ -78,6 +83,12 @@ module Sample
     options = IndiferentHash.setup(options.merge(:use_rbbt_aligner => true)) if sample_files["uBAM"] && sample_files["uBAM"].any?
     options.delete(:type_of_sequencing) unless options[:type_of_sequencing].to_s == "panel"
     if options[:use_rbbt_aligner]
+      sample_options = IndiferentHash.setup(Sample.study_options(sample).merge(Sample.sample_options(sample)))
+      sample_options.each do |key,value|
+        options.delete key if options[key] == value
+      end
+
+      options.delete :reference if sample_options[:reference] == options[:reference]
       {:task => :BAM_normal, :inputs => options, :jobname => sample}
     else
       {:inputs => options, :jobname => sample}
