@@ -47,10 +47,7 @@ module Sample
     bam_normal_name = bam_normal.step(:indexed_BAM).name
     bam = [dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM" } - [bam_normal]].flatten.first
 
-    # Always use .bam as extension, even if it's a CRAM file. It's just simpler
-    # and it seems to work
     extension = '.cram'
-
     options[:tumour_aln_cram] = bam.file('index')[bam.name + extension]
     options[:normal_aln_cram] = bam_normal.file('index')[bam_normal_name + extension]
 

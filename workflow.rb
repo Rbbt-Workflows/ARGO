@@ -42,11 +42,10 @@ module ARGO
   self.nextflow Rbbt.modules["gatk-mutect2-variant-calling"]["gatk-mutect2-variant-calling"].find(:lib), :text => "publish_dir/M2_pGenVarSnv/out/*.vcf.gz"
 
   input "ref_genome_fa-generateBas", :file, "Ill defined Nextflow parameter", nil, :nofile => true
-  extension "vcf.gz"
-  self.nextflow Rbbt.modules["sanger-wgs-variant-calling"]["sanger-wgs-variant-calling"].find(:lib), :text => "publish_dir/M2_pGenVarSnv/out/*.vcf.gz"
+  self.nextflow Rbbt.modules["sanger-wgs-variant-calling"]["sanger-wgs-variant-calling"].find(:lib)
 
   input "ref_genome_fa-generateBas", :file, "Ill defined Nextflow parameter", nil, :nofile => true
-  self.nextflow Rbbt.modules["sanger-wxs-variant-calling"]["sanger-wxs-variant-calling"].find(:lib), :text => "publish_dir/M2_pGenVarSnv/out/*.vcf.gz"
+  self.nextflow Rbbt.modules["sanger-wxs-variant-calling"]["sanger-wxs-variant-calling"].find(:lib)
 
 end
 

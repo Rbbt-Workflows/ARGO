@@ -46,22 +46,20 @@ module Sample
     {:inputs => options, :jobname => sample}
   end
   input :type_of_sequencing, :select, "Whole genome or whole exome", nil, :select_options => %w(WGS WES panel)
-  dep_task :ARGO_sanger, ARGO, "sanger-wgs-variant-calling", :tumour_aln_cram => :indexed_BAM, :normal_aln_cram => :indexed_BAM_normal do |sample,options,dependencies|
+  dep_task :ARGO_sanger_pre, ARGO, "sanger-wgs-variant-calling", :tumour_aln_cram => :indexed_BAM, :normal_aln_cram => :indexed_BAM_normal do |sample,options,dependencies|
     options = Sample.add_sample_options sample, options
 
     metadata = dependencies.flatten.select{|d| d.task_name.to_s == "ARGO_metadata" }.first
     options[:tumour_aln_metadata] = metadata.file('tumor.json')
     options[:normal_aln_metadata] = metadata.file('normal.json')
 
-    bam_normal = dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM_normal" }.first.step(:indexed_BAM)
+    bam_normal = dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM_normal" }.first
+    bam_normal_name = bam_normal.step(:indexed_BAM).name
     bam = [dependencies.flatten.select{|d| d.task_name.to_s == "indexed_BAM" } - [bam_normal]].flatten.first
 
-    # Always use .bam as extension, even if it's a CRAM file. It's just simpler
-    # and it seems to work
     extension = '.cram'
-
     options[:tumour_aln_cram] = bam.file('index')[bam.name + extension]
-    options[:normal_aln_cram] = bam_normal.file('index')[bam_normal.name + extension]
+    options[:normal_aln_cram] = bam_normal.file('index')[bam_normal_name + extension]
 
     options[:tumour_extra_info] = metadata.file('tumor_extra.tsv')
     options[:normal_extra_info] = metadata.file('normal_extra.tsv')
@@ -111,5 +109,32 @@ module Sample
       {:task =>  "sanger-wxs-variant-calling", :inputs => options}
     end
   end
+
+  dep :ARGO_sanger_pre
+  extension "vcf"
+  task :ARGO_sanger_filters => :text do
+    job = step(:ARGO_sanger_pre).join
+    vcf_files = job.file("publish_dir").glob("*/*/*.vcf.gz")
+    vcf = vcf_files.shift
+    while new = vcf_files.shift
+      Open.write(self.tmp_path, HTS.job(:join_vcfs, nil, :vcf1 => vcf, :vcf2 => new).exec)
+    end
+    nil
+  end
+
+  dep :ARGO_sanger_filters
+  extension "vcf"
+  task :ARGO_sanger => :text do
+    TSV.traverse step(:ARGO_sanger_filters), :into => :stream, :type => :array do |line|
+      next line if line[0] =~ /^#/
+      
+      chr = line.split("\t").first
+      next unless chr =~ /^(chr)?[0-9MTXY]+$/
+      next unless line =~ /PASS/
+
+      line
+    end
+  end
+
 
 end
